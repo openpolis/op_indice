@@ -8,6 +8,7 @@
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
+
 <div id="wrapper"><!-- #wrapper -->
 
 	<header><!-- header -->
@@ -18,18 +19,21 @@
 	<nav><!-- top nav -->
 		<div class="menu">
       <ul>
-        <li id="main-nav-entries">
+        <li id="main-nav-deputati">
           <a href="/deputati" {% block deputati_class %}{% endblock %}>Deputati</a>
         </li>
-        <li id="main-nav-links">
+        <li id="main-nav-senatori">
           <a href="/senatori" {% block senatori_class %}{% endblock %}>Senatori</a>
         </li>
-        <li id="main-nav-entries">
+        <li id="main-nav-methodology">
           <a href="/methodology" {% block methodology_class %}{% endblock %}>Methodology</a>
         </li>
       </ul>
 		</div>
 	</nav><!-- end of top nav -->
+	
+  {% block sub_nav %}    
+  {% endblock %}
 	
 	<section id="main"><!-- #main content and sidebar area -->
 
@@ -74,8 +78,7 @@
 				
 					<aside class="footer-segment">
 							<h4>Credits</h4>
-								<p>&copy; 2011 <a href="http://guglielmo.celata.com">Ass. Openpolis</a> <br/>
-								  Tutti i diritti riservati.</p>
+								<p>&copy; 2011 <a href="http://guglielmo.celata.com">Ass. Openpolis</a> <br/></p>
 					</aside><!-- end of #fourth footer segment -->
 
 			</section><!-- end of footer-outer-block -->

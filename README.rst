@@ -52,7 +52,7 @@ Data can be extracted directly from the DB, using multiple database connections 
 
 The settings.DATABASES parameter contains an ``opp`` connection, with read only access to the ``op_openparlamento`` database.
 
-See charts/models.py and charts.views.py for details on how records are extracted from there, using this complex query::
+See charts/models.py and charts/views.py for details on how records are extracted from there, using this complex join::
 
   select pc.id, pc.chi_id, p.nome, p.cognome, g.acronimo, c.circoscrizione, 
          pc.assenze/(pc.presenze+pc.missioni+pc.assenze)*100.0 as perc_assenze, pc.indice 
@@ -66,7 +66,7 @@ See charts/models.py and charts.views.py for details on how records are extracte
 :Authors:
     Guglielmo Celata,
     Ettore Di Cesare,
-    DEPP Srl
+    Openpolis
 :Version:
     1.0
 

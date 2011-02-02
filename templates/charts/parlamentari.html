@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}| {{type}}{% endblock %}
+{% block deputati_class %}class="active"{% endblock %}
+{% block sub_nav %}
+  <nav id="sub"><!-- sub nav -->
+		<div class="menu">
+      <ul>
+        <li id="sub-nav-list">
+          <a href="/{{type|lower}}" {% block list_class %}{% endblock %}>Elenco completo</a>
+        </li>
+        <li id="sub-nav-sex">
+          <a href="/{{type|lower}}/sex" {% block sex_class %}{% endblock %}>Per sesso</a>
+        </li>
+        <li id="sub-nav-group">
+          <a href="/{{type|lower}}/group" {% block group_class %}{% endblock %}>Per gruppo</a>
+        </li>
+        <li id="sub-nav-constituency">
+          <a href="/{{type|lower}}/constituency" {% block constituency_class %}{% endblock %}>Per circoscrizione</a>
+        </li>
+      </ul>
+		</div>
+	</nav><!-- end of sub nav -->	
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+

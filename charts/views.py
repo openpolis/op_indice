@@ -1,11 +1,14 @@
 from django.shortcuts import render_to_response
 from charts.models import OppVIndicePolitico
 
-def deputati(request):
-  records = OppVIndicePolitico.objects.db_manager('opp').raw(OppVIndicePolitico.raw_sql, ['2010-11-30', 'C'])
-  return render_to_response('charts/deputati.html', { 'object_list': records })
+extraction_date = '2010-11-30'
 
-def senatori(request):
-  records = OppVIndicePolitico.objects.db_manager('opp').raw(OppVIndicePolitico.raw_sql, ['2010-11-30', 'S'])
-  return render_to_response('charts/senatori.html', { 'object_list': records })
+def mps(request, group_by, type):
+  if  type=='Deputati':
+    tree = 'C'
+  else:
+    tree = 'S'
+    
+  records = OppVIndicePolitico.objects.db_manager('opp').raw(OppVIndicePolitico.raw_sqls[group_by], [extraction_date, tree])
+  return render_to_response("charts/parlamentari_%s.html" % group_by, { 'object_list': records, 'type': type })
   

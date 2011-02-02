@@ -1,0 +1,30 @@
+{% extends "charts/parlamentari.html" %}
+
+{% block title %}| {{ type }} per gruppo{% endblock %}
+{% block deputati_class %}class="active"{% endblock %}
+{% block group_class %}class="active"{% endblock %}
+
+{% block content %}
+  <table id="complete-chart">
+    <tbody>
+      <tr>
+        <th>Gruppo</th>
+        <th>N. {{ type|lower }}</th>
+        <th>Indice totale</th>
+        <th>Media indice</th>
+        <th>Media % Assenze</th>
+      </tr>
+      {% for rec in object_list %}
+        <tr>
+          <td>{{ rec.acronimo }}</td>
+          <td class="number">{{ rec.n }}</td>
+          <td class="number">{{ rec.indice_totale|floatformat:1 }}</td>
+          <td class="number">{{ rec.indice_medio|floatformat:1 }}</td>
+          <td class="number">{{ rec.perc_assenze|floatformat:1 }} %</td>
+        </tr>
+      {% endfor %}    
+    </tbody>
+  </table>
+  <ul>
+  </ul>
+{% endblock %}

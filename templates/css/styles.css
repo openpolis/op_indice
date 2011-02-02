@@ -109,7 +109,7 @@ padding-left: 5px;
 /* nav */
 
 nav .menu {
-font-size: 14px;
+  font-size: 18px;
 }
 
 nav .menu ul {
@@ -140,6 +140,18 @@ nav .menu a:hover {
 
 nav .menu a.active {
   background-color: #004C9A;
+}
+
+nav#sub {
+  background-color: #4F5A8A;
+  height: 30px;
+}
+
+nav#sub .menu {
+  font-size: 14px;
+}
+nav#sub .menu ul { 
+  padding-top: 5px;
 }
 
 /** HEADER */

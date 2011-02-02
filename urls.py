@@ -18,6 +18,10 @@ urlpatterns = patterns('',
     # static pages
     (r'^$', direct_to_template, { 'template' : 'charts/home.html' }),  
     (r'^methodology/$', direct_to_template, { 'template' : 'charts/methodology.html' }),  
-    (r'^deputati/$', 'charts.views.deputati'),
-    (r'^senatori/$', 'charts.views.senatori'),
+
+    # complete charts
+    (r'^deputati/$', 'charts.views.mps', { 'type': 'Deputati', 'group_by': 'list' }),
+    (r'^deputati/(?P<group_by>\w+)/$', 'charts.views.mps', { 'type': 'Deputati' }),    
+    (r'^senatori/$', 'charts.views.mps', { 'type': 'Senatori', 'group_by': 'list' }),
+    (r'^senatori/(?P<group_by>\w+)/$', 'charts.views.mps', { 'type': 'Senatori' }),    
 )

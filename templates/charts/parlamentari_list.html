@@ -1,17 +1,18 @@
-{% extends "base.html" %}
+{% extends "charts/parlamentari.html" %}
 
-{% block title %}| Senatori{% endblock %}
-{% block senatori_class %}class="active"{% endblock %}
+{% block title %}| Elenco {{ type }}{% endblock %}
+{% block deputati_class %}class="active"{% endblock %}
+{% block list_class %}class="active"{% endblock %}
 
 {% block content %}
   <table id="complete-chart">
     <tbody>
       <tr>
-        <th>nome</th>
-        <th>gruppo</th>
-        <th>circoscrizione</th>
-        <th>indice</th>
-        <th>%assenze</th>
+        <th>Nome</th>
+        <th>Gruppo</th>
+        <th>Circoscrizione</th>
+        <th>Indice</th>
+        <th>% Assenze</th>
       </tr>
       {% for rec in object_list %}
         <tr>
@@ -25,9 +26,3 @@
     </tbody>
   </table>
 {% endblock %}
-
-
-{% block whatis %}
-  <p>Classifica dei senatori.</p>
-{% endblock %}
-
