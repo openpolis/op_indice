@@ -44,12 +44,14 @@ This can be done through
 
 This map should be cached, and not computed at each request.
 
-Cached data in opp_politician_history_cache lack some fields: parliamentary group and constituency, but those fields
-are present in the opp_carica table, which has a one-to-one relation to the cached data, through the chi_id field.
-A view may be created in mysql, named opp_productivity_index_view, and the connection could query the view, instead of creating the query.
+Cached data in ``opp_politician_history_cache`` lack some fields: parliamentary group and constituency, but those fields
+are present in the ``opp_carica`` table, which has a one-to-one relation to the cached data, through the ``chi_id`` field.
+A *view* may be created in mysql, named ``opp_productivity_index_view``, and the connection could query the view, instead of using a more complex join in the query.
 
-Authors
--------
-Guglielmo Celata
-Ettore Di Cesare
-DEPP Srl
+:Authors:
+    Guglielmo Celata,
+    Ettore Di Cesare,
+    DEPP Srl
+:Version:
+    1.0
+    
