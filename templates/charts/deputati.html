@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}| Deputati{% endblock %}
+{% block deputati_class %}class="active"{% endblock %}
+
+{% block content %}
+  <table id="complete-chart">
+    <tbody>
+      <tr>
+        <th>Nome</th>
+        <th>Gruppo</th>
+        <th>Circoscrizione</th>
+        <th>Indice</th>
+        <th>% Assenze</th>
+      </tr>
+      {% for rec in records %}
+        <tr>
+          <td>{{ rec.nome }} {{ rec.cognome }}</td>
+          <td>{{ rec.acronimo }}</td>
+          <td>{{ rec.circoscrizione }}</td>
+          <td class="number">{{ rec.indice|floatformat:1 }}</td>
+          <td class="number">{{ rec.perc_assenze|floatformat:1 }} %</td>
+        </tr>
+      {% endfor %}    
+    </tbody>
+  </table>
+  <ul>
+  </ul>
+{% endblock %}
+
+
+{% block whatis %}
+  <p>Classifica dei deputati.</p>
+{% endblock %}
+

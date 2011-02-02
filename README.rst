@@ -33,20 +33,35 @@ The application is developed in **Django**, and will have three database connect
 * op: read-only access to mysql ``op_openpolis`` database (to get op_location data)
 * opp: read-only access to mysql ``op_openparlamento`` database (to get ``opp_politician_history_cache`` data)
 
-Location data need to be mapped to constituencies. 
-This can be done through     
-::
+
+Notes
+-----
+Location data need to be mapped to constituencies. A user enters her city, and chart data are filtered by the corresponding constituency. This mapping can be done through  the following tables in ``op_openpolis``::
 
   op_location
   op_constituency_location
   op_constituency
   op_election_type
 
-This map should be cached, and not computed at each request.
+This map should be *cached*, in order not to perform a query at each request.
+
 
 Cached data in ``opp_politician_history_cache`` lack some fields: parliamentary group and constituency, but those fields
-are present in the ``opp_carica`` table, which has a one-to-one relation to the cached data, through the ``chi_id`` field.
-A *view* may be created in mysql, named ``opp_productivity_index_view``, and the connection could query the view, instead of using a more complex join in the query.
+are present in other tables, so a join is required.
+Data can be extracted directly from the DB, using multiple database connections and the Manager.raw method.
+
+The settings.DATABASES parameter contains an ``opp`` connection, with read only access to the ``op_openparlamento`` database.
+
+See charts/models.py and charts.views.py for details on how records are extracted from there, using this complex query::
+
+  select pc.id, pc.chi_id, p.nome, p.cognome, g.acronimo, c.circoscrizione, 
+         pc.assenze/(pc.presenze+pc.missioni+pc.assenze)*100.0 as perc_assenze, pc.indice 
+  from opp_politician_history_cache pc, opp_carica c, opp_politico p, 
+       opp_carica_has_gruppo cg, opp_gruppo g 
+  where p.id=c.politico_id and c.id=pc.chi_id and cg.carica_id=c.id and cg.gruppo_id=g.id and 
+        cg.data_fine is null and c.data_fine is null and 
+        pc.chi_tipo='P' and pc.data=%s and pc.ramo=%s
+
 
 :Authors:
     Guglielmo Celata,
@@ -54,4 +69,4 @@ A *view* may be created in mysql, named ``opp_productivity_index_view``, and the
     DEPP Srl
 :Version:
     1.0
-    
+

@@ -1,0 +1,276 @@
+/* Created by http://freehtml5templates.com */
+
+/* reset */
+* {
+margin: 0;
+padding: 0;
+}
+
+/* render html5 elements as block */
+header, footer, section, aside, nav, article {
+display: block;
+}
+
+body {
+line-height: 1;
+background: #E2EEF7;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+color: #333;
+font-size: 14px;
+line-height: 18px;
+}
+	
+/* layout */
+
+#wrapper {
+width: 940px;
+margin: 0 auto;
+margin-top: 20px;
+margin-bottom: 20px;
+border: 3px solid #888;
+background: #fff;
+/* curved border radius */
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+
+nav {
+width: 940px;
+height: 50px;
+margin: 0 auto;
+background: #2F527A;
+}
+
+#main {
+width: 940px;
+margin: 0 auto;
+padding-top: 30px;
+background-color: #FFF;
+overflow: hidden;
+}
+
+#content {
+float: left;
+width: 900px;
+margin-left: 20px;
+}
+
+#sidebar {
+float: left;
+padding-left: 35px;
+width: 240px;
+}
+
+table#complete-chart { 
+  width: 100%;
+}
+table#complete-chart td.number {
+  text-align: right;
+}
+
+footer {
+width: 940px;
+margin: 0 auto;
+clear: both;
+}
+
+/* basics */
+
+@font-face {
+	font-family: 'UbuntuTitlingBold';
+	src: url('/fonts/UbuntuTitling-Bold-webfont.eot');
+	src: local('UbuntuTitlingBold'), url('/fonts/UbuntuTitling-Bold-webfont.woff') format('woff'), url('/fonts/UbuntuTitling-Bold-webfont.ttf') format('truetype'), url('/fonts/UbuntuTitling-Bold-webfont.svg#webfontXHkRzF8I') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+h1,h2,h3,h4,h5,h6 {
+font-family: 'UbuntuTitlingBold', Verdana, Arial, Helvetica, sans-serif;
+clear: both;
+color: #333;
+}
+
+a:link, a:visited {
+color:#004C9A;
+}
+
+a:hover, a:active {
+color: #333;
+}
+
+p {
+margin-bottom: 18px;
+}
+
+li {
+padding-left: 5px;
+}
+
+/* nav */
+
+nav .menu {
+font-size: 14px;
+}
+
+nav .menu ul {
+margin: 0;
+padding: 17px 0 0 20px;
+list-style: none;
+line-height: normal;
+}
+
+nav .menu li {
+display: block;
+float: left;
+}
+
+nav .menu a {
+display: block;
+float: left;
+margin-right: 5px;
+padding: 0px 15px;
+text-decoration: none;
+font-family: '20dbRegular', Verdana, Arial, Helvetica, sans-serif;
+color: #C3D4E4;
+}
+
+nav .menu a:hover {
+  text-decoration: underline;
+}
+
+nav .menu a.active {
+  background-color: #004C9A;
+}
+
+/** HEADER */
+
+header {
+padding: 20px 0 0 0;
+}
+
+header img {
+clear: both;
+display: block;
+}
+
+header>h1 {
+float: left;
+margin: 0 0 18px 30px;
+font-size: 50px;
+line-height: 36px;
+}
+
+header>h1 a {
+color: #333;
+text-decoration: none;
+}
+
+/** ARTICLES **/
+
+article {
+padding-right: 15px;
+}
+
+article img {
+border: none;
+-webkit-box-shadow: 3px 3px 7px #777;
+-moz-box-shadow: 3px 3px 7px #777;
+}
+
+#content p, ul, ol, hr {
+margin-bottom: 24px;
+}
+
+#content ul ul, ol ol, ul ol, ol ul {
+margin-bottom: 0;
+}
+
+#content h1, h2, h3, h4, h5, h6 {
+color: #333;
+margin: 0 0 20px 0;
+line-height: 1.5em;
+}
+
+#content h2 {
+font-size: 28px;
+}
+
+.alignleft, img.alignleft {
+display: inline;
+float: left;
+margin-right: 10px;
+}
+
+.alignright, img.alignright {
+display: inline;
+float: right;
+margin-left: 10px;
+}
+
+.aligncenter, img.aligncenter {
+clear: both;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+/* sidebar and footer widget blocks */
+
+aside h3 {
+font-size: 18px;
+}
+
+aside ul {
+list-style: circle;
+color: #8384C8;
+margin: -15px 0 15px 25px;
+}
+
+#footer-area {
+background: #004C9A;
+color: #FFF;
+font-size: 90%;
+padding: 18px 0;
+overflow: hidden;
+/* curved border radius */
+-moz-border-radius-bottomright: 8px;
+-moz-border-radius-bottomleft: 8px;
+-webkit-border-bottom-left-radius: 8px;
+-webkit-border-bottom-right-radius: 8px;
+}
+
+.footer-segment {
+float: left;
+margin-right: 20px;
+margin-left: 20px;
+width: 190px;
+}
+
+footer aside h4 {
+color: #faf0e6;
+font-size: 16px;
+line-height: 1.5em;
+}
+
+footer ul {
+list-style: none;
+margin: -15px 0;
+}
+
+footer a:link, footer a:visited {
+color: #C3D4E4;
+}
+
+footer a:hover { 
+text-decoration: underline; 
+}
+
+footer p {
+margin-top: -15px;
+color: #faf0e6;
+}
+
+section#commenti form p { margin-bottom: 1.5em; }
+section#commenti form label { width: 9em; float: left; text-align: right; margin-right: 0.5em; display: block; }
+section#commenti form input[type='text'] { margin-left: 4em; width: 6em; }
+section#commenti form textarea  { margin-left: 3em;  }
