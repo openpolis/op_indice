@@ -1,10 +1,10 @@
 {% extends "charts/parlamentari.html" %}
 
 {% block title %}| Elenco {{ type }}{% endblock %}
-{% block deputati_class %}class="active"{% endblock %}
 {% block list_class %}class="active"{% endblock %}
 
 {% block content %}
+  {{ block.super }}
   <table id="complete-chart">
     <tbody>
       <tr>
@@ -16,7 +16,7 @@
       </tr>
       {% for rec in object_list %}
         <tr>
-          <td>{{ rec.nome }} {{ rec.cognome }}</td>
+          <td><a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }}</a></td>
           <td>{{ rec.acronimo }}</td>
           <td>{{ rec.circoscrizione }}</td>
           <td class="number">{{ rec.indice|floatformat:1 }}</td>

@@ -282,7 +282,44 @@ margin-top: -15px;
 color: #faf0e6;
 }
 
-section#commenti form p { margin-bottom: 1.5em; }
-section#commenti form label { width: 9em; float: left; text-align: right; margin-right: 0.5em; display: block; }
-section#commenti form input[type='text'] { margin-left: 4em; width: 6em; }
-section#commenti form textarea  { margin-left: 3em;  }
+
+#intro-text {
+  font-size: 16px;
+  margin: 0.5em 0 1em 0;
+  padding: 0 0.5em;
+  line-height: 1.4em;
+}
+
+#top-deputati {
+  width: 48%;
+  float: left;
+}
+
+#top-senatori {
+  width: 48%;
+  float: right;
+  
+}
+
+.top-chart {
+  width: 45%;
+  background: #efefef;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+.top-chart h3 {
+  text-align: center;
+}
+.top-chart .link-to-all {
+  text-align: right;
+  margin: 0.5em 0 1em 0;
+}
+
+#location-search {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+#location-search input {
+  font-size: 16px;
+}

@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}| {{type}}{% endblock %}
-{% block deputati_class %}class="active"{% endblock %}
+
+{% block deputati_class %}
+  {% if type == 'Deputati' %}
+    class="active"
+  {% endif %}
+{% endblock %}
+
+{% block senatori_class %}
+  {% if type == 'Senatori' %}
+    class="active"
+  {% endif %}
+{% endblock %}
+
 {% block sub_nav %}
   <nav id="sub"><!-- sub nav -->
 		<div class="menu">
@@ -24,5 +36,6 @@
 {% endblock %}
 
 {% block content %}
+  <div style="text-align: right; margin-bottom: 1em; font-size: 13px">Dati estratti il {{ extraction_date }}</div>
 {% endblock %}
 

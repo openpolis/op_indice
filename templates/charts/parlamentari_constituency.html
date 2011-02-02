@@ -1,10 +1,10 @@
 {% extends "charts/parlamentari.html" %}
 
 {% block title %}| {{type}} per circoscrizione{% endblock %}
-{% block deputati_class %}class="active"{% endblock %}
 {% block constituency_class %}class="active"{% endblock %}
 
 {% block content %}
+  {{ block.super }}
   <table id="complete-chart">
     <tbody>
       <tr>

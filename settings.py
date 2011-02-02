@@ -76,7 +76,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'middleware.SQLLogToConsoleMiddleware',
+#    'middleware.SQLLogToConsoleMiddleware',
 )
 
 ROOT_URLCONF = 'op_indice.urls'
@@ -94,5 +94,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
     'django_extensions',
-    'charts'
+    'charts',
 )
+
+OPENPARLAMENTO_URL = 'http://op_openparlamento.openpolis.it'

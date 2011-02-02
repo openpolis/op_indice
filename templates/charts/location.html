@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}| Home{% endblock %}
+{% block title %}| Location{% endblock %}
 
 {% block content %}
   {% load charts_tags %}
   <section id="intro-text">
-    In in laoreet sapien. Morbi imperdiet ante sed lacus sollicitudin auctor. Nullam eleifend pharetra arcu, placerat fermentum sem tincidunt eu. Nullam condimentum lacinia venenatis. Etiam ut erat orci. Suspendisse potenti. Morbi eros massa, accumsan vitae viverra sed, sodales vitae purus. Ut eros orci, condimentum ut egestas aliquet, tristique in massa. Etiam tincidunt fermentum ante, a bibendum leo gravida ultricies.   
+    Classifiche per la località {{ params.location_id }}
   </section>
   
   <section id="top-deputati" class="top-chart">
