@@ -17,7 +17,7 @@ Requisites
    * [later] historic links (last month, six months ago, last year, ...)
 * Location page, with complete charts filtered by constituency related to location
 * Dynamic page describing the methodology
-* Data are fixed at 2010-12-31 for a few weeks, then they go real-time (with historical view)
+* Data are real-time (last date available)
 * Location are chosen through autocompleter (possibly client-side)
 * Sorting should be client-side (javascript)
 * Complete charts are scrolled through ajax requests (javascript)
