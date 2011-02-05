@@ -15,6 +15,8 @@ urlpatterns = patterns('',
       { 'document_root': '/Users/guglielmo/Workspace/op_indice/templates/images'}),
     (r'^fonts/(?P<path>.*)$', 'django.views.static.serve',
       { 'document_root': '/Users/guglielmo/Workspace/op_indice/templates/fonts'}),
+    (r'^javascripts/(?P<path>.*)$', 'django.views.static.serve',
+      { 'document_root': '/Users/guglielmo/Workspace/op_indice/templates/javascripts'}),
 
     # static pages
     (r'^$', direct_to_template, { 'template': 'charts/home.html', 

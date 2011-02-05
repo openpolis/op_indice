@@ -1,28 +1,57 @@
 {% extends "charts/parlamentari.html" %}
 
 {% block title %}| Elenco {{ type }}{% endblock %}
+{% block javascripts_includes %}
+  <script type="text/javascript" src="/javascripts/jquery-1.4.3.min.js"></script>
+  <script type="text/javascript" src="/javascripts/jquery.morelazyload.js"></script>
+{% endblock %}
+
 {% block list_class %}class="active"{% endblock %}
 
 {% block content %}
   {{ block.super }}
-  <table id="complete-chart">
-    <tbody>
-      <tr>
-        <th>Nome</th>
-        <th>Gruppo</th>
-        <th>Circoscrizione</th>
-        <th>Indice</th>
-        <th>% Assenze</th>
+  
+  <h4>{{objects_count}} {{type|lower}}</h4>
+  
+  <table id="complete-chart" class="chart lazyload">
+    <thead>
+      <tr> 
+        <th scope="col">nome</th>
+        <th scope="col">gruppo</th>  
+        <th scope="col">circoscrizione</th>  
+        <th scope="col" class="evident">indice</th>  
+        <th scope="col" class="evident">assenze (%)</th>  
       </tr>
+    </thead>
+
+    <tbody>		
       {% for rec in object_list %}
-        <tr>
-          <td><a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }}</a></td>
-          <td>{{ rec.acronimo }}</td>
-          <td>{{ rec.circoscrizione }}</td>
-          <td class="number">{{ rec.indice|floatformat:1 }}</td>
-          <td class="number">{{ rec.perc_assenze|floatformat:1 }} %</td>
+        <tr class="{% cycle 'odd' 'even' %}">
+          <th scope="row">
+            <p class="politician-id">
+              <img width="40" height="53" 
+                   highsrc="http://op_openparlamento_images.s3.amazonaws.com/parlamentari/thumb/{{rec.politico_id}}.jpeg"
+                   alt="Ico-type-politico-portrait">	
+              <a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" 
+                 target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }}</a>
+            </p>
+          </th>
+          <td class="centered">{{ rec.acronimo }}</td>
+          <td class="centered">{{ rec.circoscrizione }}</td>
+          <td class="numeric-value evident">
+            {{ rec.indice|floatformat:1 }}<br />
+            <span class="small">(pos. {{rec.indice_pos}})</span>
+          </td>
+          <td class="numeric-value evident">
+            {{ rec.perc_assenze|floatformat:1 }} % <br />
+            <span class="small">(pos. {{rec.assenze_pos}})</span>
+            
+          </td>
         </tr>
       {% endfor %}    
+
+      </tr>
     </tbody>
   </table>
+  
 {% endblock %}

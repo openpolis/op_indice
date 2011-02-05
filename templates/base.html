@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8" />
   <title>Indice di produttivit&agrave; {% block title %}{% endblock %}</title>
+  {% block javascripts_includes %}
+  {% endblock %}
 	<link rel="stylesheet" href="/css/styles.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="/css/print.css"  type="text/css" media="print" />
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -11,13 +13,20 @@
 
 <div id="wrapper"><!-- #wrapper -->
 
-	<header><!-- header -->
-		<h1><a href="/">Indice di produttivit&agrave;</a></h1>
-		<img src="/images/headerimg.jpg" width="940" height="200" alt=""><!-- header image -->
-	</header><!-- end of header -->
-	
-	<nav><!-- top nav -->
-		<div class="menu">
+  <header>
+    <section id="logos">
+      <div style="float:left">
+      <a href="http://www.openparlamento.it" target="_blank"><img src="/images/logo-openparlamento.png" alt="openparlamento"/></a>
+      </div>
+      <h1>
+        <a href="/"  style="color: #efefef">Indice di Produttivit&agrave; Parlamentare</a>
+      </h1>
+      <div style="float:right; padding: 1em;">
+        <a href="http://www.openpolis.it" target="_blank"><img src="/images/logo-openpolis.png" alt="openpolis"/></a>
+      </div>
+    </section>
+    
+  	<nav><!-- top nav -->
       <ul>
         <li id="main-nav-deputati">
           <a href="/deputati" {% block deputati_class %}{% endblock %}>Deputati</a>
@@ -32,11 +41,13 @@
           <a href="/methodology" {% block methodology_class %}{% endblock %}>Methodology</a>
         </li>
       </ul>
-		</div>
-	</nav><!-- end of top nav -->
-	
-  {% block sub_nav %}    
-  {% endblock %}
+  	</nav><!-- end of top nav -->
+
+    {% block sub_nav %}    
+    {% endblock %}
+	  
+  </header>
+
 	
 	<section id="main"><!-- #main content and sidebar area -->
 
@@ -49,47 +60,8 @@
 
 	</section><!-- end of #main content and sidebar-->
 	
-	<footer>
-		<section id="footer-area">
-
-			<section id="footer-outer-block">
-					<aside class="footer-segment">
-							<h4>Amici</h4>
-								<ul>
-									<li><a href="http://www.sonoarrivati.de">sonoarrivati.de</a></li>
-									<li><a href="http://guglielmo.celata.com">guglielmo.celata</a></li>
-								</ul>
-					</aside><!-- end of #first footer segment -->
-
-					<aside class="footer-segment">
-							<h4>Mi piace</h4>
-								<ul>
-									<li><a href="http://www.voisietequi.it">voisietequi</a></li>
-									<li><a href="http://www.openpolis.it">openpolis</a></li>
-									<li><a href="http://www.openparlamento.it">openparlamento</a></li>
-								</ul>
-					</aside><!-- end of #second footer segment -->
-
-					<aside class="footer-segment">
-							<h4>Strumenti</h4>
-								<ul>
-									<li><a href="http://www.python.org">python</a></li>
-									<li><a href="http://www.djangoproject.com">django</a></li>
-									<li><a href="http://djangopluggables.com/">django packages</a></li>
-								</ul>
-					</aside><!-- end of #third footer segment -->
-				
-					<aside class="footer-segment">
-							<h4>Credits</h4>
-								<p>&copy; 2011 <a href="http://guglielmo.celata.com">Ass. Openpolis</a> <br/></p>
-					</aside><!-- end of #fourth footer segment -->
-
-			</section><!-- end of footer-outer-block -->
-
-		</section><!-- end of footer-area -->
-	</footer>
-	
 </div><!-- #wrapper -->
+
 <!-- Free template created by http://freehtml5templates.com -->
 </body>
 </html>
