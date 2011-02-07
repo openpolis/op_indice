@@ -1,26 +1,41 @@
 {% extends "charts/parlamentari.html" %}
 
 {% block title %}| {{type}} per circoscrizione{% endblock %}
+{% block head_includes %}
+  {{ block.super }}
+
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() { 
+      $("#constituency-chart").tablesorter({
+          sortList: [[1, 1]], 
+          headers: { 2: {sorter: false} },
+          widgets: ['zebra']}); 
+    });  
+  </script>  
+{% endblock %}
+
 {% block constituency_class %}class="active"{% endblock %}
 
 {% block content %}
   {{ block.super }}
-  <table id="complete-chart">
-    <tbody>
+  <table id="constituency-chart" class="chart tablesorter">
+    <thead>
       <tr>
-        <th>Circoscrizione</th>
-        <th>N. {{ type|lower}}</th>
-        <th>Indice totale</th>
-        <th>Media indice</th>
-        <th>Media % Assenze</th>
-      </tr>
+        <th scope="col">circoscrizione</th>
+        <th scope="col">n. {{ type|lower}}</th>
+        <th scope="col">indice totale</th>
+        <th scope="col">media indice</th>
+        <th scope="col">media % assenze</th>
+      </tr>      
+    </thead>
+    <tbody>
       {% for rec in object_list %}
-        <tr>
+        <tr class="{% cycle 'odd' 'even' %}">
           <td>{{ rec.circoscrizione }}</td>
-          <td class="number">{{ rec.n }}</td>
-          <td class="number">{{ rec.indice_totale|floatformat:1 }}</td>
-          <td class="number">{{ rec.indice_medio|floatformat:1 }}</td>
-          <td class="number">{{ rec.perc_assenze|floatformat:1 }} %</td>
+          <td class="numeric-value">{{ rec.n }}</td>
+          <td class="numeric-value">{{ rec.indice_totale|floatformat:1 }}</td>
+          <td class="numeric-value">{{ rec.indice_medio|floatformat:1 }}</td>
+          <td class="numeric-value">{{ rec.perc_assenze|floatformat:2 }} %</td>
         </tr>
       {% endfor %}    
     </tbody>

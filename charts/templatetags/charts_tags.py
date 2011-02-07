@@ -24,11 +24,22 @@ class TopNode(template.Node):
       self.tree = 'C'
     if (mp_type == 'senatori'):
       self.tree = 'S'
-    self.extraction_date = parse(date)
+    self.extraction_date = template.Variable(date)
     
   def render(self, context):
-    context[self.varname] = OppVIndicePolitico.objects.db_manager('opp').raw(OppVIndicePolitico.raw_sqls['top'], [self.extraction_date, self.tree, self.num])
-    return ''
-    
+    try:
+      actual_extraction_date = self.extraction_date.resolve(context)    
+      context[self.varname] = OppVIndicePolitico.objects.db_manager('opp').raw(OppVIndicePolitico.raw_sqls['top'], [actual_extraction_date, self.tree, self.num])
+      return ''
+    except template.VariableDoesNotExist:
+      return ''
+
 register = template.Library()
 register.tag('get_top', do_top)
+      
+@register.filter
+def multiply_by(value, multiplier):
+  """multiply a value by the multiplier; both value and multiplier must be numbers"""
+  return float(value) * float(multiplier)
+
+

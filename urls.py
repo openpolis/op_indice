@@ -1,9 +1,14 @@
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.conf import settings
+from charts.models import OppVLastDate
 
 from django.contrib import admin
 admin.autodiscover()
+
+
+last_date = OppVLastDate.objects.db_manager('opp').raw(OppVLastDate.raw_sql)[0]
+extraction_date = last_date.last_date
 
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
@@ -20,7 +25,8 @@ urlpatterns = patterns('',
 
     # static pages
     (r'^$', direct_to_template, { 'template': 'charts/home.html', 
-                                  'extra_context': { 'openparlamento_url': settings.OPENPARLAMENTO_URL} }),  
+                                  'extra_context': { 'openparlamento_url': settings.OPENPARLAMENTO_URL,
+                                                     'extraction_date': extraction_date } }),  
     (r'^methodology/$', direct_to_template, { 'template': 'charts/methodology.html' }),  
 
     # complete charts

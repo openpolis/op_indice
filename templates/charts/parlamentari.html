@@ -2,6 +2,13 @@
 
 {% block title %}| {{type}}{% endblock %}
 
+{% block head_includes %}
+  <link rel="stylesheet" href="/css/tablesorter_themes/blue/style.css" type="text/css" media="print, projection, screen">
+  <script type="text/javascript" src="/javascripts/jquery-1.4.3.min.js"></script>
+  <script type="text/javascript" src="/javascripts/jquery.metadata.js"></script>
+  <script type="text/javascript" src="/javascripts/jquery.tablesorter.min.js"></script>
+{% endblock %}
+
 {% block deputati_class %}
   {% if type == 'Deputati' %}
     class="active"

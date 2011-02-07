@@ -5,17 +5,19 @@
 
 {% block content %}
   {{ block.super }}
-  <table id="complete-chart">
-    <tbody>
+  <table class="chart tablesorter">
+    <thead>
       <tr>
-        <th>Sesso</th>
-        <th>N. {{ type|lower }}</th>
-        <th>Indice totale</th>
-        <th>Media indice</th>
-        <th>Media % Assenze</th>
-      </tr>
+        <th>sesso</th>
+        <th>n. {{ type|lower }}</th>
+        <th>indice totale</th>
+        <th>media indice</th>
+        <th>media assenze</th>
+      </tr>      
+    </thead>
+    <tbody>
       {% for rec in object_list %}
-        <tr>
+        <tr class="{% cycle 'odd' 'even' %}">
           <td>
             {% if rec.sesso == 'M' %}
               Uomini
@@ -27,10 +29,10 @@
               {% endif %}
             {% endif %}
           </td>
-          <td class="number">{{ rec.n }}</td>
-          <td class="number">{{ rec.indice_totale|floatformat:1 }}</td>
-          <td class="number">{{ rec.indice_medio|floatformat:1 }}</td>
-          <td class="number">{{ rec.perc_assenze|floatformat:1 }} %</td>
+          <td class="numeric-value">{{ rec.n }}</td>
+          <td class="numeric-value">{{ rec.indice_totale|floatformat:1 }}</td>
+          <td class="numeric-value">{{ rec.indice_medio|floatformat:1 }}</td>
+          <td class="numeric-value">{{ rec.perc_assenze|floatformat:2 }} %</td>
         </tr>
       {% endfor %}    
     </tbody>

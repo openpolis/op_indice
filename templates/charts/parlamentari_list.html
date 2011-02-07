@@ -1,50 +1,64 @@
 {% extends "charts/parlamentari.html" %}
 
 {% block title %}| Elenco {{ type }}{% endblock %}
-{% block javascripts_includes %}
-  <script type="text/javascript" src="/javascripts/jquery-1.4.3.min.js"></script>
-  <script type="text/javascript" src="/javascripts/jquery.morelazyload.js"></script>
+
+{% block head_includes %}
+  {{ block.super }}
+
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() { 
+      $("#complete-chart").tablesorter({
+        sortList: [[0, 0]], 
+        headers: { 1: {sorter: false}, 2: {sorter: false} },
+        widgets: ['zebra']
+      }); 
+    });  
+  </script>  
 {% endblock %}
 
 {% block list_class %}class="active"{% endblock %}
 
 {% block content %}
+  {% load charts_tags %}
   {{ block.super }}
   
   <h4>{{objects_count}} {{type|lower}}</h4>
   
-  <table id="complete-chart" class="chart lazyload">
+  <table id="complete-chart" class="chart tablesorter">
     <thead>
       <tr> 
-        <th scope="col">nome</th>
-        <th scope="col">gruppo</th>  
-        <th scope="col">circoscrizione</th>  
-        <th scope="col" class="evident">indice</th>  
-        <th scope="col" class="evident">assenze (%)</th>  
+        <th>nome</th>
+        <th style="min-width: 80px">gruppo</th>  
+        <th>circoscrizione</th>  
+        <th class="{sorter: 'digit'}" style="min-width: 100px">indice</th>  
+        <th class="{sorter: 'percent'}" style="min-width: 120px">perc assenze</th>  
       </tr>
     </thead>
 
     <tbody>		
       {% for rec in object_list %}
-        <tr class="{% cycle 'odd' 'even' %}">
-          <th scope="row">
+        <tr>
+          <td>
+            <span class="cognome" style="display:none">{{ rec.cognome }}</span>
             <p class="politician-id">
-              <img width="40" height="53" 
-                   highsrc="http://op_openparlamento_images.s3.amazonaws.com/parlamentari/thumb/{{rec.politico_id}}.jpeg"
-                   alt="Ico-type-politico-portrait">	
               <a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" 
-                 target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }}</a>
+                 target="_blank" title="vai alla sua pagina su openparlamento.it">
+                 {{ rec.nome }} {{ rec.cognome }}
+                 </a>
             </p>
-          </th>
+          </td>
           <td class="centered">{{ rec.acronimo }}</td>
           <td class="centered">{{ rec.circoscrizione }}</td>
-          <td class="numeric-value evident">
-            {{ rec.indice|floatformat:1 }}<br />
+          <td class="numeric-value">
+            <span class="value">{{ rec.indice|floatformat:1 }}</span>
+            <br />
             <span class="small">(pos. {{rec.indice_pos}})</span>
           </td>
-          <td class="numeric-value evident">
-            {{ rec.perc_assenze|floatformat:1 }} % <br />
-            <span class="small">(pos. {{rec.assenze_pos}})</span>
+          <td class="numeric-value">
+            <span class="machine-sort" style="display:none">{{ rec.perc_assenze|multiply_by:100|floatformat:0 }}</span>            
+            <span class="value">{{ rec.perc_assenze|floatformat:2 }} % </span>
+            <br />
+            <span class="small">({{rec.assenze|floatformat:0}} su {{rec.votazioni|floatformat:0}})</span>
             
           </td>
         </tr>
@@ -55,3 +69,4 @@
   </table>
   
 {% endblock %}
+

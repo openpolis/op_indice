@@ -9,14 +9,22 @@
   </section>
   
   <section id="top-deputati" class="top-chart">
-    <h3>Top 10 dei deputati</h3>
-    {% get_top 10 deputati as top_ten_deputati asof 16/12/2010 %}
-    <table id="complete-chart">
+    <h3>Top 5 dei deputati</h3>
+    {% get_top 5 deputati as top_ten_deputati asof extraction_date %}
+    <table class="chart">
       <tbody>
         {% for rec in top_ten_deputati %}
-          <tr>
-            <td><a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }}</a> ({{ rec.acronimo }})</td>
-            <td class="number">{{ rec.indice|floatformat:1 }}</td>
+          <tr class="{% cycle 'odd' 'even' %}">
+            <th scope="row">
+              <p class="politician-id">
+                <img width="40" height="53" 
+                     src="http://op_openparlamento_images.s3.amazonaws.com/parlamentari/thumb/{{rec.politico_id}}.jpeg"
+                     alt="Ico-type-politico-portrait">	
+                <a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" 
+                   target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }} ({{ rec.acronimo }})</a>
+              </p>
+            </th>
+            <td class="numeric-value evident">{{ rec.indice|floatformat:1 }}</td>
           </tr>
         {% endfor %}    
       </tbody>
@@ -25,14 +33,22 @@
   </section>
 
   <section id="top-senatori" class="top-chart">
-    <h3>Top 10 dei senatori</h3>
-    {% get_top 10 senatori as top_ten_senatori asof 16/12/2010 %}
-    <table id="complete-chart">
+    <h3>Top 5 dei senatori</h3>
+    {% get_top 5 senatori as top_ten_senatori asof extraction_date %}
+    <table class="chart">
       <tbody>
         {% for rec in top_ten_senatori %}
-          <tr>
-            <td><a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }}</a> ({{ rec.acronimo }})</td>
-            <td class="number">{{ rec.indice|floatformat:1 }}</td>
+          <tr class="{% cycle 'odd' 'even' %}">
+            <th scope="row">
+              <p class="politician-id">
+                <img width="40" height="53" 
+                     src="http://op_openparlamento_images.s3.amazonaws.com/parlamentari/thumb/{{rec.politico_id}}.jpeg"
+                     alt="Ico-type-politico-portrait">	
+                <a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" 
+                   target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }} ({{ rec.acronimo }})</a>
+              </p>
+            </th>
+            <td class="numeric-value evident">{{ rec.indice|floatformat:1 }}</td>
           </tr>
         {% endfor %}    
       </tbody>
