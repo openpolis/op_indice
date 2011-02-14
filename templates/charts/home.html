@@ -1,66 +1,112 @@
 {% extends "base.html" %}
 
 {% block title %}| Home{% endblock %}
+{% block head_includes %}
+  <style>
+    .ui-autocomplete-loading { background: white url('/images/ui-anim_basic_16x16.gif') right center no-repeat; }
+    #city { width: 20em; }
+  	.ui-autocomplete {
+  		max-height: 10em;
+  		overflow-y: auto;
+  		/* prevent horizontal scrollbar */
+  		overflow-x: hidden;
+  		/* add padding to account for vertical scrollbar */
+  		padding-right: 20px;
+  	}
+  	/* IE 6 doesn't support max-height
+  	 * we use height instead, but this forces the menu to always be this tall
+  	 */
+  	* html .ui-autocomplete {
+  		height: 10em;
+  	}
+  </style>
+	<link rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.8.9.custom.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+  <script type="text/javascript" src="/javascripts/jquery-ui-autocompleter.custom.min.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() { 
+      $('#city').focus(function(){
+        if ($(this)._cleared) return;
+        $(this).val('');
+        $(this)._cleared = true;
+      });  
+      
+      {% if fetch_s3_images %}
+        $(".lazyload").each(function() {
+          $(this).attr("src", $(this).attr("highsrc"));				              
+          console.log($(this).attr("highsrc"));
+        });
+      {% endif %}
+      
+  		$( "#city" ).autocomplete({
+  			source: function( request, response ) {
+  				$.ajax({
+  					url: "http://api.geonames.org/searchJSON",
+  					dataType: "jsonp",
+  					data: {
+  					  username: 'openpolis',
+  						fcl: "A",
+  						fcode: 'ADM3',
+  						style: "full",
+  						country: 'IT',
+  						lang: 'it',
+  						maxRows: 15,
+  						name_startsWith: request.term
+  					},
+  					success: function( data ) {
+  						response( $.map( data.geonames, function( item ) {
+  							return {
+  								label: item.name + (item.adminName2 ? " ("+ item.adminName2 +")": ""),
+  								value: item.name
+  							}
+  						}));
+  					}
+  				});
+  			},
+  			minLength: 2,
+  			select: function( event, ui ) {
+  				console.log( ui.item ?
+  					"Selected: " + ui.item.label :
+  					"Nothing selected, input was " + this.value);
+  				window.location.href = 'http://{{ current_site_domain }}/' + ui.item.value; 
+  			},
+  			open: function() {
+  				$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+  			},
+  			close: function() {
+  				$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+  			}
+  		});
+    	
+    });
+  </script>      
+{% endblock %}
 
 {% block content %}
   {% load charts_tags %}
   <section id="intro-text">
     In in laoreet sapien. Morbi imperdiet ante sed lacus sollicitudin auctor. Nullam eleifend pharetra arcu, placerat fermentum sem tincidunt eu. Nullam condimentum lacinia venenatis. Etiam ut erat orci. Suspendisse potenti. Morbi eros massa, accumsan vitae viverra sed, sodales vitae purus. Ut eros orci, condimentum ut egestas aliquet, tristique in massa. Etiam tincidunt fermentum ante, a bibendum leo gravida ultricies.   
   </section>
+
+  <section id="city-search" class="ui-widget">
+    <label for"city">le classifiche dei tuoi parlamentari</label><br/>
+    <input id="city" value="inserisci il tuo comune" />
+  </section>
   
   <section id="top-deputati" class="top-chart">
     <h3>Top 5 dei deputati</h3>
-    {% get_top 5 deputati as top_ten_deputati asof extraction_date %}
-    <table class="chart">
-      <tbody>
-        {% for rec in top_ten_deputati %}
-          <tr class="{% cycle 'odd' 'even' %}">
-            <th scope="row">
-              <p class="politician-id">
-                <img width="40" height="53" 
-                     src="http://op_openparlamento_images.s3.amazonaws.com/parlamentari/thumb/{{rec.politico_id}}.jpeg"
-                     alt="Ico-type-politico-portrait">	
-                <a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" 
-                   target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }} ({{ rec.acronimo }})</a>
-              </p>
-            </th>
-            <td class="numeric-value evident">{{ rec.indice|floatformat:1 }}</td>
-          </tr>
-        {% endfor %}    
-      </tbody>
-    </table>
+    {% get_top 5 deputati as mps asof extraction_date %}
+    {% include "charts/_mps_table_with_pictures.html" %}
     <div class="link-to-all"><a href="/deputati">vai all'elenco completo</a></div>
   </section>
 
   <section id="top-senatori" class="top-chart">
     <h3>Top 5 dei senatori</h3>
-    {% get_top 5 senatori as top_ten_senatori asof extraction_date %}
-    <table class="chart">
-      <tbody>
-        {% for rec in top_ten_senatori %}
-          <tr class="{% cycle 'odd' 'even' %}">
-            <th scope="row">
-              <p class="politician-id">
-                <img width="40" height="53" 
-                     src="http://op_openparlamento_images.s3.amazonaws.com/parlamentari/thumb/{{rec.politico_id}}.jpeg"
-                     alt="Ico-type-politico-portrait">	
-                <a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" 
-                   target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }} ({{ rec.acronimo }})</a>
-              </p>
-            </th>
-            <td class="numeric-value evident">{{ rec.indice|floatformat:1 }}</td>
-          </tr>
-        {% endfor %}    
-      </tbody>
-    </table>
+    {% get_top 5 senatori as mps asof extraction_date %}
+    {% include "charts/_mps_table_with_pictures.html" %}
     <div class="link-to-all"><a href="/senatori">vai all'elenco completo</a></div>
   </section>
   
-  <section id="location-search">
-    Per il tuo comune:
-    <input type="text" value=""/>
-    <input type="submit" value="Cerca"/>
-  </section>
 
 {% endblock %}
 

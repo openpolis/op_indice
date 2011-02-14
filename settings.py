@@ -1,6 +1,6 @@
 # Django settings for op_indice project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -17,6 +17,12 @@ DATABASES = {
     },
     'opp': {
         'NAME': 'op_openparlamento',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'selector',
+        'PASSWORD': ''
+    },
+    'op': {
+        'NAME': 'op_openpolis',
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'selector',
         'PASSWORD': ''
@@ -71,7 +77,9 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+#    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+#    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -97,4 +105,10 @@ INSTALLED_APPS = (
     'charts',
 )
 
-OPENPARLAMENTO_URL = 'http://op_openparlamento.openpolis.it'
+#CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+#CACHE_MIDDLEWARE_SECONDS = 300
+#CACHE_MIDDLEWARE_KEY_PREIX = 'op_indice'
+#CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+
+OPENPARLAMENTO_URL = 'http://parlamento.openpolis.it'
+FETCH_S3_IMAGES = True

@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
+from django.contrib.sites.models import Site
 from django.conf import settings
 from charts.models import OppVLastDate
 
@@ -26,15 +27,27 @@ urlpatterns = patterns('',
     # static pages
     (r'^$', direct_to_template, { 'template': 'charts/home.html', 
                                   'extra_context': { 'openparlamento_url': settings.OPENPARLAMENTO_URL,
-                                                     'extraction_date': extraction_date } }),  
+                                                     'extraction_date': extraction_date,
+                                                     'fetch_s3_images': settings.FETCH_S3_IMAGES,
+                                                     'current_site_domain': Site.objects.get_current().domain } }),  
     (r'^methodology/$', direct_to_template, { 'template': 'charts/methodology.html' }),  
 
     # complete charts
-    (r'^deputati/$', 'charts.views.mps', { 'type': 'Deputati', 'group_by': 'list' }),
-    (r'^deputati/(?P<group_by>\w+)/$', 'charts.views.mps', { 'type': 'Deputati' }),    
-    (r'^senatori/$', 'charts.views.mps', { 'type': 'Senatori', 'group_by': 'list' }),
-    (r'^senatori/(?P<group_by>\w+)/$', 'charts.views.mps', { 'type': 'Senatori' }),    
+    (r'^deputati/$', 'charts.views.mps', 
+      { 'type': 'Deputati', 'group_by': 'list',
+        'openparlamento_url': settings.OPENPARLAMENTO_URL, 'extraction_date': extraction_date }),
+    (r'^deputati/(?P<group_by>\w+)/$', 'charts.views.mps', 
+      { 'type': 'Deputati', 
+        'openparlamento_url': settings.OPENPARLAMENTO_URL, 'extraction_date': extraction_date }),    
+    (r'^senatori/$', 'charts.views.mps', { 
+        'type': 'Senatori', 'group_by': 'list',
+        'openparlamento_url': settings.OPENPARLAMENTO_URL, 'extraction_date': extraction_date }),
+    (r'^senatori/(?P<group_by>\w+)/$', 'charts.views.mps', { 
+        'type': 'Senatori',
+        'openparlamento_url': settings.OPENPARLAMENTO_URL, 'extraction_date': extraction_date }),    
 
-    (r'^location/$', direct_to_template, { 'template': 'charts/location.html'}),    
-    (r'^location/(?P<location_id>\d+)/$', direct_to_template, { 'template': 'charts/location.html'}),    
+    (r'^(?P<op_location_name>[\w \']+)/$', 
+      'charts.views.location', { 'openparlamento_url': settings.OPENPARLAMENTO_URL, 
+                                 'extraction_date': extraction_date,
+                                 'fetch_s3_images': settings.FETCH_S3_IMAGES }),    
 )

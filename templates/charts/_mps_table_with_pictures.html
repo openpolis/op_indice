@@ -1,0 +1,20 @@
+<table class="chart">
+  <tbody>
+    {% for rec in mps %}
+      <tr class="{% cycle 'odd' 'even' %}">
+        <th scope="row">
+          <p class="politician-id">
+            <img class="lazyload" width="40" height="53" 
+                 highsrc="http://op_openparlamento_images.s3.amazonaws.com/parlamentari/thumb/{{rec.politico_id}}.jpeg"
+                 src="/images/ico-type-politico-portrait.png"
+                 alt="Ico-type-politico-portrait">	
+            <a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" 
+               target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }} ({{ rec.acronimo }})</a>
+          </p>
+        </th>
+        <td class="numeric-value evident">{{ rec.indice|floatformat:1 }}</td>
+      </tr>
+    {% endfor %}    
+  </tbody>
+</table>
+

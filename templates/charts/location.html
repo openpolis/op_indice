@@ -2,48 +2,38 @@
 
 {% block title %}| Location{% endblock %}
 
+{% block head_includes %}
+  <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() { 
+        {% if fetch_s3_images %}
+          $(".lazyload").each(function() {
+            $(this).attr("src", $(this).attr("highsrc"));				              
+            console.log($(this).attr("highsrc"));
+          });
+        {% endif %}
+      });
+    </script>      
+{% endblock %}
+
 {% block content %}
   {% load charts_tags %}
   <section id="intro-text">
-    Classifiche per la località {{ params.location_id }}
-  </section>
-  
-  <section id="top-deputati" class="top-chart">
-    <h3>Top 10 dei deputati</h3>
-    {% get_top 10 deputati as top_ten_deputati asof 16/12/2010 %}
-    <table id="complete-chart">
-      <tbody>
-        {% for rec in top_ten_deputati %}
-          <tr>
-            <td><a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }}</a> ({{ rec.acronimo }})</td>
-            <td class="number">{{ rec.indice|floatformat:1 }}</td>
-          </tr>
-        {% endfor %}    
-      </tbody>
-    </table>
-    <div class="link-to-all"><a href="/deputati">vai all'elenco completo</a></div>
+    Classifiche per <strong>{{ op_location_name }}</strong>. 
+    <a href="/">Torna alla classifica generale</a>
   </section>
 
   <section id="top-senatori" class="top-chart">
-    <h3>Top 10 dei senatori</h3>
-    {% get_top 10 senatori as top_ten_senatori asof 16/12/2010 %}
-    <table id="complete-chart">
-      <tbody>
-        {% for rec in top_ten_senatori %}
-          <tr>
-            <td><a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" target="_blank" title="vai alla sua pagina su openparlamento.it">{{ rec.nome }} {{ rec.cognome }}</a> ({{ rec.acronimo }})</td>
-            <td class="number">{{ rec.indice|floatformat:1 }}</td>
-          </tr>
-        {% endfor %}    
-      </tbody>
-    </table>
-    <div class="link-to-all"><a href="/senatori">vai all'elenco completo</a></div>
+    <h3>Senatori circoscrizione {{ constituencies.Senato }}</h3>
+    {% get_mps oftype senatori in constituencies.Senato asof extraction_date as mps %}
+    {% include "charts/_mps_table_with_pictures.html" %}
   </section>
   
-  <section id="location-search">
-    Per il tuo comune:
-    <input type="text" value=""/>
-    <input type="submit" value="Cerca"/>
+
+  <section id="top-deputati" class="top-chart">
+    <h3>Deputati circoscrizione {{ constituencies.Camera }}</h3>
+    {% get_mps oftype deputati in constituencies.Camera asof extraction_date as mps %}
+    {% include "charts/_mps_table_with_pictures.html" %}
   </section>
 
 {% endblock %}

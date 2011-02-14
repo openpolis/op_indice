@@ -14,7 +14,7 @@ class SQLLogToConsoleMiddleware(object):
           connection = connections[connection_name]
           if connection.queries:
             time = sum([float(q['time']) for q in connection.queries])        
-            header_t = Template("{{name}}: {{count}} quer{{count|pluralize:\"y,ies\"}} in {{time}} seconds")
+            header_t = Template("\n\n{{name}}: {{count}} quer{{count|pluralize:\"y,ies\"}} in {{time}} seconds")
             print header_t.render(Context({
               'name': connection_name, 
               'sqllog':connection.queries,

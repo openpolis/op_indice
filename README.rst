@@ -14,12 +14,11 @@ Requisites
    * showing name, parliamentary group, constituency, index and non-attendance %,
    * groupable by constituency, parliamentary group and sex,
    * sortable by name, constituency, index and non-attendance %
-* Location page, with complete charts filtered by constituency related to location
 * Dynamic page describing the methodology
 * Data are real-time (last date available)
-* Location are chosen through autocompleter (possibly client-side)
 * Sorting should be client-side (javascript)
-* Complete charts are scrolled through ajax requests (javascript)
+* Location page, with complete charts filtered by constituency related to location
+* Location are chosen through autocompleter (possibly client-side)
 * Application should be optimized for high-volume traffic (memcache)
 * The content must be in italian and in english (multi-lingual)
 
