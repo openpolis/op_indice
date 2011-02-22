@@ -1,6 +1,7 @@
 {% extends "charts/base_parlamentari.html" %}
+{% load i18n %}
 
-{% block title %}| {{ type }} per gruppo{% endblock %}
+{% block title %}| {{ type }} {% trans "by group" %}{% endblock %}
 {% block head_includes %}
   {{ block.super }}
 
@@ -8,7 +9,7 @@
     $(document).ready(function() { 
       $("#group-chart").tablesorter({
           sortList: [[1, 1]], 
-          headers: { 2: {sorter: false} },
+          headers: { 0: {sorter: false} },
           widgets: ['zebra']}); 
     });  
   </script>  
@@ -22,21 +23,19 @@
   <table id="group-chart" class="chart tablesorter">
     <thead>
       <tr>
-        <th scope="col">gruppo</th>
+        <th scope="col">{% trans "group" %}</th>
+        <th scope="col">{% trans "index avg" %}</th>
+        <th scope="col">{% trans "absence rate" %}</th>
         <th scope="col">n. {{ type|lower }}</th>
-        <th scope="col">indice totale</th>
-        <th scope="col">media indice</th>
-        <th scope="col">media assenze</th>
       </tr>      
     </thead>
     <tbody>
       {% for rec in object_list %}
         <tr class="{% cycle 'odd' 'even' %}">
-          <td>{{ rec.acronimo }}</th>
-          <td class="numeric-value">{{ rec.n }}</td>
-          <td class="numeric-value">{{ rec.indice_totale|floatformat:1 }}</td>
+          <td>{{ rec.gruppo }}</th>
           <td class="numeric-value">{{ rec.indice_medio|floatformat:1 }}</td>
           <td class="numeric-value">{{ rec.perc_assenze|floatformat:2 }} %</td>
+          <td class="numeric-value">{{ rec.n }}</td>
         </tr>
       {% endfor %}    
     </tbody>

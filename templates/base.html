@@ -1,8 +1,10 @@
+{% load i18n %}
+
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-  <title>Indice di produttivit&agrave; {% block title %}{% endblock %}</title>
+  <title>{% trans "Productivity index" %} {% block title %}{% endblock %}</title>
   {% block head_includes %}
   {% endblock %}
 	<link rel="stylesheet" href="/css/styles.css" type="text/css" media="screen" />
@@ -15,19 +17,16 @@
 
   <header>
     <section id="logos">
-      <div style="float:left">
-      <a href="http://www.openparlamento.it" target="_blank"><img src="/images/logo-openparlamento.png" alt="openparlamento"/></a>
-      </div>
       <h1>
-        <a href="/"  style="color: #efefef">Indice di Produttivit&agrave; Parlamentare</a>
+        <a href="/"><img src="/images/title-img.png"/></a>
       </h1>
-      <div style="float:right; padding: 1em;">
-        <a href="http://www.openpolis.it" target="_blank"><img src="/images/logo-openpolis.png" alt="openpolis"/></a>
+      <div style="float:right;">
+        <a href="http://associazione.openpolis.it" target="_blank"><img src="/images/logo-associazione.png" alt="associazione openpolis" border="0"/></a><a href="http://www.openparlamento.it" target="_blank"><img src="/images/logo-openparlamento.png" alt="openparlamento" border="0"/></a>
       </div>
     </section>
     
   	<nav><!-- top nav -->
-      <ul>
+      <ul style="clear:both; float: left">
         <li id="main-nav-deputati">
           <a href="/deputati" {% block deputati_class %}{% endblock %}>Deputati</a>
         </li>
@@ -35,9 +34,28 @@
           <a href="/senatori" {% block senatori_class %}{% endblock %}>Senatori</a>
         </li>
         <li id="main-nav-methodology">
-          <a href="/methodology" {% block methodology_class %}{% endblock %}>Informazioni</a>
+          <a href="/about" {% block methodology_class %}{% endblock %}>{% trans "About" %}</a>
         </li>
-      </ul>
+      </ul>  	   
+      
+      <!-- language selector -->
+      <div style="float:right">
+        <form id="language-selector" action="/i18n/setlang/" method="post">
+          {% csrf_token %}
+          <label for="language">{% trans "language" %}</label>
+          <select name="language" id="language">
+            {% for lang in LANGUAGES %}
+              {% if LANGUAGE_CODE == lang.0 %}
+                <option value="{{ lang.0 }}" selected="selected">{{ lang.1 }}</option>
+              {% else %}
+                <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          <input type="submit" value="{% trans 'go' %}" />
+        </form>
+      </div>
+      
   	</nav><!-- end of top nav -->
 
     {% block sub_nav %}    
@@ -45,21 +63,33 @@
 	  
   </header>
 
-	
 	<section id="main"><!-- #main content and sidebar area -->
 
-			<section id="content"><!-- #content -->
-			
-			  {% block content %}      
-        {% endblock %}      
+  	<section style="width: 900px; margin: 0 auto; border: 1px solid red; height: 100px; text-align: center;">
+  	</section>
 
-			</section><!-- end of #content -->
+		<section id="content"><!-- #content -->
+		
+		  {% block content %}      
+      {% endblock %}      
+
+		</section><!-- end of #content -->
 
 	</section><!-- end of #main content and sidebar-->
-	
+
+	<footer>
+  		<section id="footer-area" style="text-align: center;">
+        <p style="color: grey; margin-bottom: 5px;">{% trans "openpolis association's web sites:" %}</p>
+        <span style="margin-top: 100px;">
+          <a href="http://www.openpolis.it"><img src="http://associazione.openpolis.it/images/button_op.png" border="0" alt=" logo di openpolis"></a>
+          <a href="http://www.openparlamento.it"><img src="http://associazione.openpolis.it/images/button_opp.png" border="0" alt="logo di openparlamento"></a>
+          <a href="http://www.voisietequi.it"><img src="http://associazione.openpolis.it/images/button_vsq.png" border="0" alt="logo di voi siete qui"></a>
+          <a href="http://associazione.openpolis.it"><img src="http://associazione.openpolis.it/images/button_ass_op.png" border="0" alt="logo associazione openpolis"></a>
+        </span>
+  		</section><!-- end of footer-area -->
+  	</footer>
 </div><!-- #wrapper -->
 
 <!-- Free template created by http://freehtml5templates.com -->
 </body>
 </html>
-

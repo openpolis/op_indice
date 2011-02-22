@@ -1,0 +1,143 @@
+# Translations for op_indice project.
+# Copyright (C) 2011
+# This file is distributed under the same license as the op_indice package.
+# FIRST AUTHOR <guglielmo.celata@openpolis.it>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-02-22 15:41+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#: templates/base.html:7
+msgid "Productivity index"
+msgstr "Indice di produttività"
+
+#: templates/base.html:37 templates/charts/about.html:5
+msgid "About"
+msgstr "Informazioni"
+
+#: templates/base.html:45
+msgid "language"
+msgstr "lingua"
+
+#: templates/base.html:55
+msgid "go"
+msgstr "vai"
+
+#: templates/base.html:82
+msgid "openpolis association's web sites:"
+msgstr "i siti dell'associazione openpolis:"
+
+#: templates/charts/base_parlamentari.html:29
+msgid "complete list"
+msgstr "elenco completo"
+
+#: templates/charts/base_parlamentari.html:32
+#: templates/charts/parlamentari_sex.html:4
+msgid "by sex"
+msgstr "per sesso"
+
+#: templates/charts/base_parlamentari.html:35
+#: templates/charts/parlamentari_group.html:4
+msgid "by group"
+msgstr "per gruppo"
+
+#: templates/charts/base_parlamentari.html:38
+#: templates/charts/parlamentari_constituency.html:4
+msgid "by region"
+msgstr "per regione"
+
+#: templates/charts/base_parlamentari.html:46
+msgid "Data extracted on"
+msgstr "Dati estratti il"
+
+#: templates/charts/home.html:85
+msgid "your MPs charts"
+msgstr "le classifiche dei tuoi parlamentari"
+
+#: templates/charts/home.html:86
+msgid "insert your city name"
+msgstr "inserisci il tuo comune"
+
+#: templates/charts/home.html:90
+msgid "Top 10 deputati"
+msgstr "I primi 10 deputati"
+
+#: templates/charts/home.html:93 templates/charts/home.html.py:100
+msgid "go to the complete list"
+msgstr "vai all'elenco completo"
+
+#: templates/charts/home.html:97
+msgid "Top 10 senatori"
+msgstr "I primi 10 senatori"
+
+#: templates/charts/parlamentari_constituency.html:24
+msgid "region"
+msgstr "regione"
+
+#: templates/charts/parlamentari_constituency.html:25
+#: templates/charts/parlamentari_group.html:27
+#: templates/charts/parlamentari_sex.html:13
+msgid "index avg"
+msgstr "media indice"
+
+#: templates/charts/parlamentari_constituency.html:26
+#: templates/charts/parlamentari_group.html:28
+#: templates/charts/parlamentari_list.html:33
+#: templates/charts/parlamentari_sex.html:14
+msgid "absence rate"
+msgstr "tasso di assenza"
+
+#: templates/charts/parlamentari_group.html:26
+#: templates/charts/parlamentari_list.html:34
+msgid "group"
+msgstr "gruppo"
+
+#: templates/charts/parlamentari_list.html:4
+msgid "list of"
+msgstr "elenco di"
+
+#: templates/charts/parlamentari_list.html:31
+msgid "name"
+msgstr "nome"
+
+#: templates/charts/parlamentari_list.html:32
+msgid "index"
+msgstr "indice"
+
+#: templates/charts/parlamentari_list.html:35
+msgid "constituency"
+msgstr "circoscrizione"
+
+#: templates/charts/parlamentari_list.html:46
+msgid "go to page on openparlamento.it"
+msgstr "vai alla pagina su openparlamento.it"
+
+#: templates/charts/parlamentari_list.html:60
+msgid "on"
+msgstr "su"
+
+#: templates/charts/parlamentari_sex.html:12
+msgid "sex"
+msgstr "per sesso"
+
+#: templates/charts/parlamentari_sex.html:23
+msgid "Men"
+msgstr "Uomini"
+
+#: templates/charts/parlamentari_sex.html:26
+msgid "Women"
+msgstr "Donne"
+
+#: templates/charts/parlamentari_sex.html:28
+msgid "Unknown"
+msgstr "Sconosciuto"

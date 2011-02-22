@@ -2,20 +2,6 @@
 
 {% block title %}| Location{% endblock %}
 
-{% block head_includes %}
-  <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf-8">
-      $(document).ready(function() { 
-        {% if fetch_s3_images %}
-          $(".lazyload").each(function() {
-            $(this).attr("src", $(this).attr("highsrc"));				              
-            console.log($(this).attr("highsrc"));
-          });
-        {% endif %}
-      });
-    </script>      
-{% endblock %}
-
 {% block content %}
   {% load charts_tags %}
   <section id="intro-text">

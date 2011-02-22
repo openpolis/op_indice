@@ -12,9 +12,10 @@ header, footer, section, aside, nav, article {
 }
 
 body {
-  background: #E6E1D8 url(/images/bg-body.png) repeat-x 0% 0%;
+  background: #f4f2ea;
   color: #333;
   font-family: Arial, Helvetica, sans-serif;
+  min-width: 900px;
 }
 	
 /* basics */
@@ -37,21 +38,23 @@ table tbody th {
 #wrapper { min-width:1004px; width: auto !important; width: 1004px; margin: 1px auto 10px auto; }
 #wrapper-800 { min-width:750px; width: auto !important; width: 750px; margin: 1px auto 10px auto; }
 
-header { margin: 0 12px; }
+header { 
+  margin: 0 12px;
+}
 
 /* nav */
 nav { 
-  background: #f7f7ea url(/images/bg-navigation.png) repeat-x top left; 
+  background: #0a5264; 
   min-height:24px; 
   height: auto !important; 
-  padding: 5px 5px 0 30px;
+  padding: 5px;
  }
 
 nav li { float: left;  }
 nav a, nav .active { 
-  color: #f58300; 
+  color: #f4f2ea; 
   font-size: 18px; 
-  padding: 0 6px; 
+  padding: 2px 6px; 
   margin-right: 15px; 
   -moz-border-radius: 3px; 
   -webkit-border-radius: 3px; 
@@ -59,8 +62,8 @@ nav a, nav .active {
   font-weight: bold; 
 }
 nav a:hover, nav .active { 
-  color: #fff; 
-  background-color: #f58300; 
+  color: #f4f2ea; 
+  background-color: #e27221; 
   text-decoration: none; 
 }
 #wrapper-800 nav { padding-left: 15px; }
@@ -69,30 +72,35 @@ nav a:hover, nav .active {
 nav#sub {
   font-size: 14px;
   background-image: none;
-  background-color: #f7f7ea;
+  background-color: #fff;
+}
+
+nav#sub a:hover, nav#sub .active { 
+  background-color: #0a5264; 
+  color: #f4f2ea ;
 }
 
 nav#sub a {
+  color:  #e27221;
   font-weight: normal;  
 }
 
 
 #logos {
-  background: #6A9EB9 url(/images/bg-tools.jpg) no-repeat 0% 0%;
+  background: url("/images/bg-header.png") repeat-x -10px;
   border-top-left-radius: 5px 5px;
   border-top-right-radius: 5px 5px;
   color: white;
   font-size: 11px;
-  height: 73px;
-  padding: 12px 20px 0px 45px;
+  height: 86px;
+  padding: 0;
 }
 
 #logos h1 {
   float: left;
   font-size: 250%;
-  margin-top: 10px;
-  margin-left: 2em;
-  width: 60%;
+  margin-top: 0px;
+  margin-left: 150px;
 }
 
 
@@ -102,9 +110,6 @@ nav#sub a {
   padding-top: 30px;
   background-color: #FFF;
   overflow: hidden;
-  border-bottom-right-radius: 5px 5px;
-  border-bottom-left-radius: 5px 5px;
-  margin-bottom: 10em;
 }
 
 #content {
@@ -139,7 +144,7 @@ table.chart thead th {
 }
 
 table.chart tbody th, table.chart tbody td  { 
-  padding: 10px 1px 5px 0; 
+  padding: 10px 5px 5px 5px; 
   border-bottom: 1px solid #dfe0e0; 
   border-top: 1px solid #fff; 
   color: #000;
@@ -176,6 +181,7 @@ footer {
   margin: 0 12px;
   clear: both;
 }
+
 
 
 #content ul, #content ol, #content hr {
@@ -235,6 +241,20 @@ margin-right: auto;
   
 }
 
+#top-deputati h3, #top-senatori h3 {
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+#top-deputati h3 {
+  background-color: #3c8cb5;
+}
+#top-senatori h3 {
+  background-color: #f3b846;
+}
+
+
+
 .top-chart {
   width: 45%;
   padding: 0.5em;
@@ -251,8 +271,9 @@ margin-right: auto;
 .top-chart table.chart th { padding-top: 0px; }
 #city-search {
   text-align: left;
-  width: 30%;
+  width: 35%;
   margin: 0 auto;
+  margin-bottom: 1em;
   clear: both;
 }
 
@@ -266,3 +287,27 @@ margin-right: auto;
   font-size: 18px;
   color: #999;
 }
+
+#language-selector { color: white; font-size: 12px;}
+
+
+#footer-area {
+  background: #fff;
+  color: #000;
+  font-size: 90%;
+  padding: 18px 0;
+  overflow: hidden;
+  /* curved border radius */
+  -moz-border-radius-bottomright: 8px;
+  -moz-border-radius-bottomleft: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+}
+
+.footer-segment {
+  float: left;
+  margin-right: 20px;
+  margin-left: 20px;
+  width: 190px;
+}
+

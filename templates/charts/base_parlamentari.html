@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}| {{type}}{% endblock %}
+{% block title %}| {{ type }}{% endblock %}
 
 {% block head_includes %}
   <link rel="stylesheet" href="/css/tablesorter_themes/blue/style.css" type="text/css" media="print, projection, screen">
@@ -10,13 +11,13 @@
 {% endblock %}
 
 {% block deputati_class %}
-  {% if type == 'Deputati' %}
+  {% if type == 'deputati' %}
     class="active"
   {% endif %}
 {% endblock %}
 
 {% block senatori_class %}
-  {% if type == 'Senatori' %}
+  {% if type == 'senatori' %}
     class="active"
   {% endif %}
 {% endblock %}
@@ -25,22 +26,24 @@
   <nav id="sub"><!-- sub nav -->
     <ul>
       <li id="sub-nav-list">
-        <a href="/{{type|lower}}" {% block list_class %}{% endblock %}>Elenco completo</a>
+        <a href="/{{type|lower}}" {% block list_class %}{% endblock %}>{% trans "complete list" %}</a>
       </li>
       <li id="sub-nav-sex">
-        <a href="/{{type|lower}}/sex" {% block sex_class %}{% endblock %}>Per sesso</a>
+        <a href="/{{type|lower}}/sex" {% block sex_class %}{% endblock %}>{% trans "by sex" %}</a>
       </li>
       <li id="sub-nav-group">
-        <a href="/{{type|lower}}/group" {% block group_class %}{% endblock %}>Per gruppo</a>
+        <a href="/{{type|lower}}/group" {% block group_class %}{% endblock %}>{% trans "by group" %}</a>
       </li>
       <li id="sub-nav-constituency">
-        <a href="/{{type|lower}}/constituency" {% block constituency_class %}{% endblock %}>Per circoscrizione</a>
+        <a href="/{{type|lower}}/constituency" {% block constituency_class %}{% endblock %}>{% trans "by region" %}</a>
       </li>
     </ul>
 	</nav><!-- end of sub nav -->	
 {% endblock %}
 
 {% block content %}
-  <div style="text-align: right; margin-bottom: 1em; font-size: 13px">Dati estratti il {{ extraction_date }}</div>
+  <div style="text-align: right; margin: 1.5em 0; font-size: 13px">
+    {% blocktrans %}Data extracted on{% endblocktrans %} {{  extraction_date|date:"DATE_FORMAT" }}
+  </div>
 {% endblock %}
 

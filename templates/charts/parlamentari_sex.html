@@ -1,6 +1,7 @@
 {% extends "charts/base_parlamentari.html" %}
+{% load i18n %}
 
-{% block title %}| {{ type }} per sesso{% endblock %}
+{% block title %}| {{ type }} {% trans "by sex" %}{% endblock %}
 {% block sex_class %}class="active"{% endblock %}
 
 {% block content %}
@@ -8,11 +9,10 @@
   <table class="chart tablesorter">
     <thead>
       <tr>
-        <th>sesso</th>
+        <th>{% trans "sex" %}</th>
+        <th>{% trans "index avg" %}</th>
+        <th>{% trans "absence rate" %}</th>
         <th>n. {{ type|lower }}</th>
-        <th>indice totale</th>
-        <th>media indice</th>
-        <th>media assenze</th>
       </tr>      
     </thead>
     <tbody>
@@ -20,19 +20,18 @@
         <tr class="{% cycle 'odd' 'even' %}">
           <td>
             {% if rec.sesso == 'M' %}
-              Uomini
+              {% trans "Men" %}
             {% else %} 
               {% if rec.sesso == 'F' %}
-                Donne
+                {% trans "Women" %}
               {% else %} 
-                Non specificato
+                {% trans "Unknown" %}
               {% endif %}
             {% endif %}
           </td>
-          <td class="numeric-value">{{ rec.n }}</td>
-          <td class="numeric-value">{{ rec.indice_totale|floatformat:1 }}</td>
           <td class="numeric-value">{{ rec.indice_medio|floatformat:1 }}</td>
           <td class="numeric-value">{{ rec.perc_assenze|floatformat:2 }} %</td>
+          <td class="numeric-value">{{ rec.n }}</td>
         </tr>
       {% endfor %}    
     </tbody>

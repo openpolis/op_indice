@@ -1,6 +1,7 @@
 {% extends "charts/base_parlamentari.html" %}
+{% load i18n %}
 
-{% block title %}| Elenco {{ type }}{% endblock %}
+{% block title %}| {% trans "list of" %} {{ type }}{% endblock %}
 
 {% block head_includes %}
   {{ block.super }}
@@ -8,8 +9,8 @@
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function() { 
       $("#complete-chart").tablesorter({
-        sortList: [[0, 0]], 
-        headers: { 1: {sorter: false}, 2: {sorter: false} },
+        sortList: [[1, 1]], 
+        headers: { 3: {sorter: false}, 4: {sorter: false} },
         widgets: ['zebra']
       }); 
     });  
@@ -27,11 +28,11 @@
   <table id="complete-chart" class="chart tablesorter">
     <thead>
       <tr> 
-        <th>nome</th>
-        <th style="min-width: 80px">gruppo</th>  
-        <th>circoscrizione</th>  
-        <th class="{sorter: 'digit'}" style="min-width: 100px">indice</th>  
-        <th class="{sorter: 'percent'}" style="min-width: 120px">perc assenze</th>  
+        <th>{% trans "name" %}</th>
+        <th class="{sorter: 'digit'}" style="min-width: 100px">{% trans "index" %}</th>  
+        <th class="{sorter: 'percent'}" style="min-width: 120px">{% trans "absence rate" %}</th>  
+        <th style="min-width: 80px">{% trans "group" %}</th>  
+        <th>{% trans "constituency" %}</th>  
       </tr>
     </thead>
 
@@ -42,13 +43,11 @@
             <span class="cognome" style="display:none">{{ rec.cognome }}</span>
             <p class="politician-id">
               <a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" 
-                 target="_blank" title="vai alla sua pagina su openparlamento.it">
+                 target="_blank" title="{% trans 'go to page on openparlamento.it' %}">
                  {{ rec.nome }} {{ rec.cognome }}
                  </a>
             </p>
           </td>
-          <td class="centered">{{ rec.acronimo }}</td>
-          <td class="centered">{{ rec.circoscrizione }}</td>
           <td class="numeric-value">
             <span class="value">{{ rec.indice|floatformat:1 }}</span>
             <br />
@@ -58,9 +57,11 @@
             <span class="machine-sort" style="display:none">{{ rec.perc_assenze|multiply_by:100|floatformat:0 }}</span>            
             <span class="value">{{ rec.perc_assenze|floatformat:2 }} % </span>
             <br />
-            <span class="small">({{rec.assenze|floatformat:0}} su {{rec.votazioni|floatformat:0}})</span>
+            <span class="small">({{rec.assenze|floatformat:0}} {% trans "on" %} {{rec.votazioni|floatformat:0}})</span>
             
           </td>
+          <td class="centered">{{ rec.acronimo }}</td>
+          <td class="centered">{{ rec.circoscrizione }}</td>
         </tr>
       {% endfor %}    
 
