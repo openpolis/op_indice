@@ -1,0 +1,6 @@
+Django==1.2.4
+South
+django-extensions
+MySQLdb
+dateutil
+markdown
