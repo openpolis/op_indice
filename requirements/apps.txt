@@ -1,6 +1,7 @@
 Django==1.2.4
 South
 django-extensions
-MySQLdb
-dateutil
+MySQL-python
 markdown
+django_generic_flatblocks
+
