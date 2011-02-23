@@ -16,10 +16,10 @@ def home(request, extraction_date, openparlamento_url, fetch_s3_images):
     context_instance=RequestContext(request)
   )
   
-def about(request):
-  return render_to_response("charts/about.html", 
+def info(request):
+  return render_to_response("charts/info.html", 
     {
-      'block_name': "about.%s" %  request.LANGUAGE_CODE
+      'block_name': "info.%s" %  request.LANGUAGE_CODE
     },
     context_instance=RequestContext(request)
   )

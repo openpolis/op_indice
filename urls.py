@@ -19,7 +19,7 @@ urlpatterns = patterns('',
       'openparlamento_url': settings.OPENPARLAMENTO_URL, 
       'extraction_date': extraction_date,
       'fetch_s3_images': settings.FETCH_S3_IMAGES }),  
-    (r'^about/$', 'charts.views.about'),  
+    (r'^info/$', 'charts.views.info'),  
 
     # complete charts
     (r'^deputati/$', 'charts.views.mps', 
@@ -44,6 +44,10 @@ urlpatterns = patterns('',
 # static media (not for production!)
 if (settings.ENVIRONMENT != 'production'):
   urlpatterns += patterns('',
+    (r'^robots.txt$', 'django.views.static.serve', 
+      { 'path' : "/robots.txt", 
+        'document_root': settings.TEMPLATE_DIRS[0],
+        'show_indexes': False } ),
     (r'^css/(?P<path>.*)$', 'django.views.static.serve',
       { 'document_root': "%s/css" % settings.TEMPLATE_DIRS[0]}),
     (r'^images/(?P<path>.*)$', 'django.views.static.serve',
