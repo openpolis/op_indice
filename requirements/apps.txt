@@ -1,5 +1,6 @@
 Django==1.2.4
 South
+python-dateutil
 django-extensions
 MySQL-python
 markdown

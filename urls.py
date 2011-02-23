@@ -14,16 +14,6 @@ extraction_date = last_date.last_date
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 
-    # static media (not for production!)
-    (r'^css/(?P<path>.*)$', 'django.views.static.serve',
-      { 'document_root': '/Users/guglielmo/Workspace/op_indice/templates/css'}),
-    (r'^images/(?P<path>.*)$', 'django.views.static.serve',
-      { 'document_root': '/Users/guglielmo/Workspace/op_indice/templates/images'}),
-    (r'^fonts/(?P<path>.*)$', 'django.views.static.serve',
-      { 'document_root': '/Users/guglielmo/Workspace/op_indice/templates/fonts'}),
-    (r'^javascripts/(?P<path>.*)$', 'django.views.static.serve',
-      { 'document_root': '/Users/guglielmo/Workspace/op_indice/templates/javascripts'}),
-
     # static pages
     (r'^$', 'charts.views.home', { 
       'openparlamento_url': settings.OPENPARLAMENTO_URL, 
@@ -50,3 +40,16 @@ urlpatterns = patterns('',
                                  'extraction_date': extraction_date,
                                  'fetch_s3_images': settings.FETCH_S3_IMAGES }),    
 )
+
+# static media (not for production!)
+if (settings.ENVIRONMENT != 'production'):
+  urlpatterns += patterns('',
+    (r'^css/(?P<path>.*)$', 'django.views.static.serve',
+      { 'document_root': "%s/css" % settings.TEMPLATE_DIRS[0]}),
+    (r'^images/(?P<path>.*)$', 'django.views.static.serve',
+      { 'document_root': "%s/images" % settings.TEMPLATE_DIRS[0]}),
+    (r'^fonts/(?P<path>.*)$', 'django.views.static.serve',
+      { 'document_root': "%s/fonts" % settings.TEMPLATE_DIRS[0]}),
+    (r'^javascripts/(?P<path>.*)$', 'django.views.static.serve',
+      { 'document_root': "%s/javascripts" % settings.TEMPLATE_DIRS[0]}),  
+  )
