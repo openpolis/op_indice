@@ -1,6 +1,10 @@
 from django import template
-from charts.models import OppVIndicePolitico
-import datetime
+from django.conf import settings
+from datetime import datetime
+import urllib2
+from json_proxy import get_json_data
+
+
 from dateutil.parser import *
 
 register = template.Library()
@@ -27,13 +31,17 @@ class MpsNode(template.Node):
     self.constituency = template.Variable(constituency)
     self.varname = varname
     self.extraction_date = template.Variable(date)
-    print "type: %s" % mp_type
     
   def render(self, context):
     try:
       actual_extraction_date = self.extraction_date.resolve(context)    
       actual_constituency = self.constituency.resolve(context)
-      context[self.varname] = OppVIndicePolitico.objects.db_manager('opp').raw(OppVIndicePolitico.raw_sqls['mps_in_location'], [actual_extraction_date, self.tree, actual_constituency])
+
+      last_date = datetime.strftime(actual_extraction_date, "%Y-%m-%d")
+      json_endpoint = "json_getIndexChartsPoliticiansInConstituency"
+      json_url = "%s/%s?ramo=%s&data=%s&circoscrizione=%s" % (settings.OPENPARLAMENTO_URL, json_endpoint, self.tree, last_date, urllib2.quote(actual_constituency))
+      print "sending request to: %s" % json_url
+      context[self.varname] = get_json_data(json_url)
       return ''
     except template.VariableDoesNotExist:
       return ''
@@ -67,7 +75,11 @@ class TopNode(template.Node):
   def render(self, context):
     try:
       actual_extraction_date = self.extraction_date.resolve(context)    
-      context[self.varname] = OppVIndicePolitico.objects.db_manager('opp').raw(OppVIndicePolitico.raw_sqls['top'], [actual_extraction_date, self.tree, self.num])
+      last_date = datetime.strftime(actual_extraction_date, "%Y-%m-%d")
+      json_endpoint = "json_getIndexChartsTopPoliticians"
+      json_url = "%s/%s?ramo=%s&data=%s&limit=%s" % (settings.OPENPARLAMENTO_URL, json_endpoint, self.tree, last_date, self.num)
+      
+      context[self.varname] = get_json_data(json_url)
       return ''
     except template.VariableDoesNotExist:
       return ''

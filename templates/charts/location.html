@@ -5,20 +5,19 @@
 {% block content %}
   {% load charts_tags %}
   <section id="intro-text">
-    Classifiche per <strong>{{ op_location_name }}</strong>. 
     <a href="/">Torna alla classifica generale</a>
   </section>
 
   <section id="top-senatori" class="top-chart">
-    <h3>Senatori circoscrizione {{ constituencies.Senato }}</h3>
-    {% get_mps oftype senatori in constituencies.Senato asof extraction_date as mps %}
+    <h3>Senatori circoscrizione {{ constituencies.senato }}</h3>
+    {% get_mps oftype senatori in constituencies.senato asof extraction_date as mps %}
     {% include "charts/_mps_table_with_pictures.html" %}
   </section>
   
 
   <section id="top-deputati" class="top-chart">
-    <h3>Deputati circoscrizione {{ constituencies.Camera }}</h3>
-    {% get_mps oftype deputati in constituencies.Camera asof extraction_date as mps %}
+    <h3>Deputati circoscrizione {{ constituencies.camera }}</h3>
+    {% get_mps oftype deputati in constituencies.camera asof extraction_date as mps %}
     {% include "charts/_mps_table_with_pictures.html" %}
   </section>
 

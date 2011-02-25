@@ -26,16 +26,16 @@
   <nav id="sub"><!-- sub nav -->
     <ul>
       <li id="sub-nav-list">
-        <a href="/{{type|lower}}" {% block list_class %}{% endblock %}>{% trans "complete list" %}</a>
+        <a href="/{{type|lower}}.html" {% block list_class %}{% endblock %}>{% trans "complete list" %}</a>
       </li>
       <li id="sub-nav-sex">
-        <a href="/{{type|lower}}/sex" {% block sex_class %}{% endblock %}>{% trans "by sex" %}</a>
+        <a href="/{{type|lower}}/sex.html" {% block sex_class %}{% endblock %}>{% trans "by sex" %}</a>
       </li>
       <li id="sub-nav-group">
-        <a href="/{{type|lower}}/group" {% block group_class %}{% endblock %}>{% trans "by group" %}</a>
+        <a href="/{{type|lower}}/group.html" {% block group_class %}{% endblock %}>{% trans "by group" %}</a>
       </li>
       <li id="sub-nav-constituency">
-        <a href="/{{type|lower}}/constituency" {% block constituency_class %}{% endblock %}>{% trans "by region" %}</a>
+        <a href="/{{type|lower}}/constituency.html" {% block constituency_class %}{% endblock %}>{% trans "by region" %}</a>
       </li>
     </ul>
 	</nav><!-- end of sub nav -->	

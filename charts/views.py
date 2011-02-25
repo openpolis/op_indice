@@ -2,7 +2,8 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.sites.models import Site
 from django.http import Http404
-from charts.models import OppVIndicePolitico, OppVLastDate, OpVConstituenciesForLocation
+from datetime import datetime
+from json_proxy import get_json_data
 
 def home(request, extraction_date, openparlamento_url, fetch_s3_images):
   return render_to_response("charts/home.html", 
@@ -26,16 +27,28 @@ def info(request):
     
 
 def mps(request, group_by, type, extraction_date, openparlamento_url):
+  if group_by == 'constituency':
+    json_endpoint = "json_getIndexChartsRegions"
+  elif group_by == 'group':
+    json_endpoint = "json_getIndexChartsGroups"
+  elif group_by == 'sex':
+    json_endpoint = "json_getIndexChartsSex"
+  else :
+    json_endpoint = "json_getIndexChartsPoliticians"
+
   if  type=='deputati':
     tree = 'C'
   else:
     tree = 'S'
     
-  records = OppVIndicePolitico.objects.db_manager('opp').raw(OppVIndicePolitico.raw_sqls[group_by], [extraction_date, tree])
+  last_date = datetime.strftime(extraction_date, "%Y-%m-%d")
+  json_url = "%s/%s?ramo=%s&data=%s" % (openparlamento_url, json_endpoint, tree, last_date)
+    
+  records = get_json_data(json_url)
   return render_to_response("charts/parlamentari_%s.html" % group_by, 
     { 
       'object_list': records, 
-      'objects_count': sum(1 for rec in records), 
+      'objects_count': len(records), 
       'type': type, 
       'extraction_date': extraction_date, 
       'openparlamento_url': openparlamento_url,
@@ -43,12 +56,17 @@ def mps(request, group_by, type, extraction_date, openparlamento_url):
     context_instance=RequestContext(request)
   )
   
-def location(request, op_location_name, extraction_date, openparlamento_url, fetch_s3_images):
-  constituencies = OpVConstituenciesForLocation.objects.db_manager('op').raw(OpVConstituenciesForLocation.raw_sql, [op_location_name])
+def location(request, op_constituency_name, extraction_date, openparlamento_url, fetch_s3_images):
   c_hash = {}
-  for c in constituencies:
-      c_hash[c.ramo] = c.collegio
-
+  c_hash['camera'] = op_constituency_name
+  c_hash['senato'] = op_constituency_name
+  
+  print "c_hash: %r" % c_hash
+  if (op_constituency_name[-1:] == '1' or
+     op_constituency_name[-1:] == '2' or
+     op_constituency_name[-1:] == '3') :
+     c_hash['senato'] = op_constituency_name[:-2]
+    
   if len(c_hash) == 0:
     raise Http404
 
@@ -56,7 +74,6 @@ def location(request, op_location_name, extraction_date, openparlamento_url, fet
   return render_to_response("charts/location.html", 
     {
       'constituencies' : c_hash,
-      'op_location_name': op_location_name, 
       'extraction_date': extraction_date, 
       'openparlamento_url': openparlamento_url,
       'fetch_s3_images': fetch_s3_images 

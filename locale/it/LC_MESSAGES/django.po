@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 15:41+0100\n"
+"POT-Creation-Date: 2011-02-23 12:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Productivity index"
 msgstr "Indice di produttività"
 
-#: templates/base.html:37 templates/charts/about.html:5
+#: templates/base.html:37 templates/charts/info.html:5
 msgid "About"
 msgstr "Informazioni"
 
@@ -34,7 +34,7 @@ msgid "go"
 msgstr "vai"
 
 #: templates/base.html:82
-msgid "openpolis association's web sites:"
+msgid "openpolis association web sites:"
 msgstr "i siti dell'associazione openpolis:"
 
 #: templates/charts/base_parlamentari.html:29
@@ -60,23 +60,23 @@ msgstr "per regione"
 msgid "Data extracted on"
 msgstr "Dati estratti il"
 
-#: templates/charts/home.html:85
+#: templates/charts/home.html:71
 msgid "your MPs charts"
 msgstr "le classifiche dei tuoi parlamentari"
 
-#: templates/charts/home.html:86
+#: templates/charts/home.html:72
 msgid "insert your city name"
 msgstr "inserisci il tuo comune"
 
-#: templates/charts/home.html:90
+#: templates/charts/home.html:76
 msgid "Top 10 deputati"
 msgstr "I primi 10 deputati"
 
-#: templates/charts/home.html:93 templates/charts/home.html.py:100
+#: templates/charts/home.html:79 templates/charts/home.html.py:86
 msgid "go to the complete list"
 msgstr "vai all'elenco completo"
 
-#: templates/charts/home.html:97
+#: templates/charts/home.html:83
 msgid "Top 10 senatori"
 msgstr "I primi 10 senatori"
 

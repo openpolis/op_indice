@@ -1,41 +1,46 @@
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.conf import settings
-from charts.models import OppVLastDate
 from django.utils import translation
+from datetime import datetime
+from json_proxy import get_json_data
+
+last_date_data = get_json_data('http://op_openparlamento.openpolis.it/json_getLastDateForPoliticianHistoryCache')
+extraction_date = datetime.strptime(last_date_data['last_date'], '%Y-%m-%d')
 
 from django.contrib import admin
 admin.autodiscover()
 
-
-last_date = OppVLastDate.objects.db_manager('opp').raw(OppVLastDate.raw_sql)[0]
-extraction_date = last_date.last_date
+# extract last date for politician_history cached data from opp
+# TODO: move to a proper location (proxy json request handler)
 
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 
-    # static pages
+    # home page
     (r'^$', 'charts.views.home', { 
       'openparlamento_url': settings.OPENPARLAMENTO_URL, 
       'extraction_date': extraction_date,
       'fetch_s3_images': settings.FETCH_S3_IMAGES }),  
-    (r'^info/$', 'charts.views.info'),  
+    
+    # info page
+    (r'^info.html$', 'charts.views.info'),  
 
     # complete charts
-    (r'^deputati/$', 'charts.views.mps', 
+    (r'^deputati.html$', 'charts.views.mps', 
       { 'type': 'deputati', 'group_by': 'list',
         'openparlamento_url': settings.OPENPARLAMENTO_URL, 'extraction_date': extraction_date }),
-    (r'^deputati/(?P<group_by>\w+)/$', 'charts.views.mps', 
+    (r'^deputati/(?P<group_by>\w+).html$', 'charts.views.mps', 
       { 'type': 'deputati', 
         'openparlamento_url': settings.OPENPARLAMENTO_URL, 'extraction_date': extraction_date }),    
-    (r'^senatori/$', 'charts.views.mps', { 
+    (r'^senatori.html$', 'charts.views.mps', { 
         'type': 'senatori', 'group_by': 'list',
         'openparlamento_url': settings.OPENPARLAMENTO_URL, 'extraction_date': extraction_date }),
-    (r'^senatori/(?P<group_by>\w+)/$', 'charts.views.mps', { 
+    (r'^senatori/(?P<group_by>\w+).html$', 'charts.views.mps', { 
         'type': 'senatori',
         'openparlamento_url': settings.OPENPARLAMENTO_URL, 'extraction_date': extraction_date }),    
     (r'^i18n/', include('django.conf.urls.i18n')),
-    (r'^(?P<op_location_name>[\w \']+)/$', 
+    (r'^(?P<op_constituency_name>[\w \']+).html$', 
       'charts.views.location', { 'openparlamento_url': settings.OPENPARLAMENTO_URL, 
                                  'extraction_date': extraction_date,
                                  'fetch_s3_images': settings.FETCH_S3_IMAGES }),    
@@ -46,6 +51,10 @@ if (settings.ENVIRONMENT != 'production'):
   urlpatterns += patterns('',
     (r'^robots.txt$', 'django.views.static.serve', 
       { 'path' : "/robots.txt", 
+        'document_root': settings.TEMPLATE_DIRS[0],
+        'show_indexes': False } ),
+    (r'^favicon.ico$', 'django.views.static.serve', 
+      { 'path' : "/favicon.ico", 
         'document_root': settings.TEMPLATE_DIRS[0],
         'show_indexes': False } ),
     (r'^css/(?P<path>.*)$', 'django.views.static.serve',

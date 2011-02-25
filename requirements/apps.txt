@@ -5,4 +5,5 @@ django-extensions
 MySQL-python
 markdown
 django_generic_flatblocks
+simplejson
 

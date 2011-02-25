@@ -33,34 +33,19 @@
         $(this)._cleared = true;
       });  
       
+      
+      var availableLocations = [
+        { value: "Roma", circ: "Lazio 1" },
+        { value: "Romeno (Padova)", circ: "Veneto 2" },
+        { value: "Romedio (Trento)", circ: "Trentino-Alto adige" },
+        { value: "Milano", circ: "Lombardia 1" }
+      ];
+      
   		$( "#city" ).autocomplete({
-  			source: function( request, response ) {
-  				$.ajax({
-  					url: "http://api.geonames.org/searchJSON",
-  					dataType: "jsonp",
-  					data: {
-  					  username: 'openpolis',
-  						fcl: "A",
-  						fcode: 'ADM3',
-  						style: "full",
-  						country: 'IT',
-  						lang: 'it',
-  						maxRows: 15,
-  						name_startsWith: request.term
-  					},
-  					success: function( data ) {
-  						response( $.map( data.geonames, function( item ) {
-  							return {
-  								label: item.name + (item.adminName2 ? " ("+ item.adminName2 +")": ""),
-  								value: item.name
-  							}
-  						}));
-  					}
-  				});
-  			},
+  			source: availableLocations,
   			minLength: 2,
   			select: function( event, ui ) {
-  				window.location.href = 'http://{{ current_site_domain }}/' + ui.item.value; 
+  				window.location.href += ui.item.circ + ".html"; 
   			},
   			open: function() {
   				$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
@@ -79,6 +64,7 @@
   <section id="intro-text">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan eleifend lectus ac adipiscing. Nullam condimentum elementum nibh quis rutrum. Fusce felis neque, ultricies non placerat at, elementum in nulla. Proin vel ultrices ligula. Maecenas mattis augue non ante gravida at aliquam libero imperdiet. In risus metus, egestas sit amet faucibus eget, tristique sit amet felis.</p> 
     <p>In accumsan tellus commodo quam suscipit ut gravida est ullamcorper. Sed vel lorem mauris. Etiam id pulvinar enim. Aenean iaculis, metus non viverra fermentum, nunc arcu faucibus nunc, vel congue augue erat ut augue. Quisque non risus nunc. Ut nec tempor est. Sed quis ultrices turpis. Sed non elit quis ante euismod eleifend. Nunc interdum massa at dolor malesuada sed consectetur velit posuere. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+    
   </section>
 
   <section id="city-search" class="ui-widget">
@@ -90,14 +76,14 @@
     <h3>{% trans "Top 10 deputati" %}</h3>
     {% get_top 10 deputati as mps asof extraction_date %}
     {% include "charts/_mps_table_with_pictures.html" %}
-    <div class="link-to-all"><a href="/deputati">{% trans "go to the complete list" %}</a></div>
+    <div class="link-to-all"><a href="/deputati.html">{% trans "go to the complete list" %}</a></div>
   </section>
 
   <section id="top-senatori" class="top-chart">
     <h3>{% trans "Top 10 senatori" %}</h3>
     {% get_top 10 senatori as mps asof extraction_date %}
     {% include "charts/_mps_table_with_pictures.html" %}
-    <div class="link-to-all"><a href="/senatori">{% trans "go to the complete list" %}</a></div>
+    <div class="link-to-all"><a href="/senatori.html">{% trans "go to the complete list" %}</a></div>
   </section>
   
 

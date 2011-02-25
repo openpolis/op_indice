@@ -28,17 +28,18 @@
   	<nav><!-- top nav -->
       <ul style="clear:both; float: left">
         <li id="main-nav-deputati">
-          <a href="/deputati" {% block deputati_class %}{% endblock %}>Deputati</a>
+          <a href="/deputati.html" {% block deputati_class %}{% endblock %}>Deputati</a>
         </li>
         <li id="main-nav-senatori">
-          <a href="/senatori" {% block senatori_class %}{% endblock %}>Senatori</a>
+          <a href="/senatori.html" {% block senatori_class %}{% endblock %}>Senatori</a>
         </li>
         <li id="main-nav-methodology">
-          <a href="/about" {% block methodology_class %}{% endblock %}>{% trans "About" %}</a>
+          <a href="/info.html" {% block methodology_class %}{% endblock %}>Info</a>
         </li>
       </ul>  	   
       
       <!-- language selector -->
+      <!-- 
       <div style="float:right">
         <form id="language-selector" action="/i18n/setlang/" method="post">
           {% csrf_token %}
@@ -55,6 +56,7 @@
           <input type="submit" value="{% trans 'go' %}" />
         </form>
       </div>
+      -->
       
   	</nav><!-- end of top nav -->
 
@@ -65,10 +67,13 @@
 
 	<section id="main"><!-- #main content and sidebar area -->
 
-  	<section style="width: 900px; margin: 0 auto; border: 1px solid red; height: 100px; text-align: center;">
-  	</section>
+  	<section id="campaign-banners" style="text-align: center;">
+        <a href="http://associazione.openpolis.it/contribuisci/diventa-socio"><img id="imgAd" src="https://s3-eu-west-1.amazonaws.com/op-images/frame03.jpg" border="0" /></a>
+        <span style="margin-left:5px;"><a href="http://indice.openpolis.it"><img src="https://s3-eu-west-1.amazonaws.com/op-images/banner-rapporto.png" border="0" /></a></span>
+	  </section>
 
 		<section id="content"><!-- #content -->
+		
 		
 		  {% block content %}      
       {% endblock %}      
@@ -79,7 +84,7 @@
 
 	<footer>
   		<section id="footer-area" style="text-align: center;">
-        <p style="color: grey; margin-bottom: 5px;">{% trans "openpolis association's web sites:" %}</p>
+        <p style="color: grey; margin-bottom: 5px;">{% trans "openpolis association web sites:" %}</p>
         <span style="margin-top: 100px;">
           <a href="http://www.openpolis.it"><img src="http://associazione.openpolis.it/images/button_op.png" border="0" alt=" logo di openpolis"></a>
           <a href="http://www.openparlamento.it"><img src="http://associazione.openpolis.it/images/button_opp.png" border="0" alt="logo di openparlamento"></a>
@@ -89,6 +94,26 @@
   		</section><!-- end of footer-area -->
   	</footer>
 </div><!-- #wrapper -->
+
+
+<script type="text/javascript">
+  jQuery().ready(function(){
+    function rImage() {
+        var i = jQuery("#imgAd");
+        i.animate({ opacity: 1 }, 5000, function() {
+            i.attr('src', 'https://s3-eu-west-1.amazonaws.com/op-images/frame01.jpg');
+        }).animate({ opacity: 1 }, 3000, function() {
+            i.attr('src', 'https://s3-eu-west-1.amazonaws.com/op-images/frame02.jpg');
+        }).animate({ opacity: 1 }, 5000, function() {
+            i.attr('src', 'https://s3-eu-west-1.amazonaws.com/op-images/frame03.jpg');
+            rImage();
+        })
+    };
+    rImage();        
+  });
+
+//]]>
+</script>
 
 <!-- Free template created by http://freehtml5templates.com -->
 </body>
