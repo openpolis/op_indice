@@ -1,3 +1,4 @@
 settings.py
 op_indice.db
 apache/*
+mirror_s3sync.txt
