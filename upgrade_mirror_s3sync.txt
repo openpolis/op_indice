@@ -1,3 +1,0 @@
-
-wget --progress=dot --no-cache --no-check-certificate --mirror --no-host-directories --convert-links http://localhost:8000
-s3cmd sync ./ s3://indice.openpolis.it -P --exclude=.DS_Store --progress
