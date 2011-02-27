@@ -5,7 +5,7 @@ from django.utils import translation
 from datetime import datetime
 from json_proxy import get_json_data
 
-last_date_data = get_json_data("http://%s/json_getLastDateForPoliticianHistoryCache" % settings.OPENPARLAMENTO_URL)
+last_date_data = get_json_data("%s/json_getLastDateForPoliticianHistoryCache" % settings.OPENPARLAMENTO_URL)
 extraction_date = datetime.strptime(last_date_data['last_date'], '%Y-%m-%d')
 
 from django.contrib import admin
