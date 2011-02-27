@@ -66,8 +66,6 @@ def location(request, op_constituency_name, extraction_date, openparlamento_url,
      op_constituency_name[-1:] == '3') :
      c_hash['senato'] = op_constituency_name[:-2]
     
-  print "c_hash: %r" % c_hash
-
   if len(c_hash) == 0:
     raise Http404
 

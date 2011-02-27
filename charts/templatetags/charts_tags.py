@@ -40,7 +40,6 @@ class MpsNode(template.Node):
       last_date = datetime.strftime(actual_extraction_date, "%Y-%m-%d")
       json_endpoint = "json_getIndexChartsPoliticiansInConstituency"
       json_url = "%s/%s?ramo=%s&data=%s&circoscrizione=%s" % (settings.OPENPARLAMENTO_URL, json_endpoint, self.tree, last_date, urllib2.quote(actual_constituency))
-      print "sending request to: %s" % json_url
       context[self.varname] = get_json_data(json_url)
       return ''
     except template.VariableDoesNotExist:
