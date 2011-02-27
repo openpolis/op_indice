@@ -21,9 +21,11 @@
 
 {% block content %}
   {% load charts_tags %}
+  <h2 style="font-size:24px;font-weight:bold;text-align:center;"><a href="http://camereaperte2011.openpolis.it">Scarica il rapporto "CAMERE APERTE 2011"</a><span style="font-size:12px;font-weight:normal;">&nbsp;&nbsp;[pdf, 1.2mb]</span></h2> 
+  Classifica dei {{type}} in base all'Indice di Produttività Parlamentare [per conoscere la metodologia di valutazione <a href="/info.html">clicca qui</a>].<br/>
+  Dall'elenco stati eliminati il Presidente della Camera, i {{type}} che hanno incarichi di Governo (Ministri, Viceministri, Sottosegretari) e coloro che hanno assunto l'incarico di parlamentare da meno di 12 mesi.<br/>
+  Per ordinare, in maniera crescente o decrescente, l'elenco per "nome" (cognome), "indice" (di Produttività) e "tasso di assenza", fare click sul titolo della colonna corrispondente.
   {{ block.super }}
-  
-  <h4>{{objects_count}} {{type|lower}}</h4>
   
   <table id="complete-chart" class="chart tablesorter">
     <thead>
