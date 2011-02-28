@@ -34,38 +34,26 @@
 
 
       $( "#city" ).autocomplete({
-        /*
   			source: function( request, response ) {
   				$.ajax({
-  					url: "http://op_openpolis.openpolis.it/fe_dev.php/json_getLocationsForIndiceAutocompleter?name_starts_with="+request.term,
+  					url: "http://op_openpolis.openpolis.it/fe_dev.php/json_getLocationsForIndiceAutocompleter",
+  					data: { 'name_starts_with': request.term },
+  					crossDomain: true,
   					dataType: "jsonp",
   					success: function( data ) {
   						response( $.map( data.locations, function( item ) {
   							return {
-  								label: item.label,
-  								value: item.circ
+  								label: item.name + (item.prov != ''? " (" + item.prov + ")" : ''),
+  								circ: item.circ
   							}
   						}));
-  					}
+  					}      			
   				});
   			},
-  			*/
-  			source: function( request, response ) {
-  				$.ajax({
-  					url: "http://api.geonames.org/searchJSON?formatted=true&name_startsWith="+request.term+"&maxRows=10&lang=it&username=openpolis&style=short",
-  					dataType: "jsonp",
-  					success: function( data ) {
-  						response( $.map( data.geonames, function( item ) {
-  							return {
-  								label: item.name,
-  								value: item.name
-  							}
-  						}));
-  					}
-  				});
-  			},
-  			
         minLength: 2,
+        select: function( event, ui ) {
+  				window.location.href += ui.item.circ + ".html"; 
+  			},
         open: function() {
           $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
         },
@@ -90,12 +78,10 @@
     
   </section>
 
-  <!-- 
   <section id="city-search" class="ui-widget">
     <label for"city">{% trans "your MPs charts" %}</label><br/>
     <input id="city" value="{% trans 'insert your city name' %}" />
   </section>
-  -->
   
   <section id="top-deputati" class="top-chart">
     <h3>{% trans "Top 10 deputati" %}</h3>
