@@ -36,7 +36,7 @@
       $( "#city" ).autocomplete({
   			source: function( request, response ) {
   				$.ajax({
-  					url: "http://op_openpolis.openpolis.it/fe_dev.php/json_getLocationsForIndiceAutocompleter",
+  					url: "http://openpolis.it/json_getLocationsForIndiceAutocompleter",
   					data: { 'name_starts_with': request.term },
   					crossDomain: true,
   					dataType: "jsonp",
