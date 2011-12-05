@@ -40,31 +40,41 @@
 
     <tbody>		
       {% for rec in object_list %}
-        <tr>
-          <td>
-            <span class="cognome" style="display:none">{{ rec.cognome }}</span>
-            <p class="politician-id">
-              <a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" 
-                 target="_blank" title="{% trans 'go to page on openparlamento.it' %}">
-                 {{ rec.nome }} {{ rec.cognome }}
-                 </a>
-            </p>
-          </td>
-          <td class="numeric-value">
-            <span class="value">{{ rec.indice|floatformat:1 }}</span>
-            <br />
-            <span class="small">(pos. {{rec.indice_pos}})</span>
-          </td>
-          <td class="numeric-value">
-            <span class="machine-sort" style="display:none">{{ rec.perc_assenze|multiply_by:100|floatformat:0 }}</span>            
-            <span class="value">{{ rec.perc_assenze|floatformat:2 }} % </span>
-            <br />
-            <span class="small">({{rec.assenze|floatformat:0}} {% trans "on" %} {{rec.votazioni|floatformat:0}})</span>
+        {% if rec.data_inizio_incarico %}
+          <tr class="yellow">
+        {% else %}
+          <tr>        
+        {% endif %}
+            <td>
+              <span class="cognome" style="display:none">{{ rec.cognome }}</span>
+              <p class="politician-id">
+                <a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" 
+                   target="_blank" title="{% trans 'go to page on openparlamento.it' %}">
+                   {{ rec.nome }} {{ rec.cognome }}
+                </a><br/>
+                {% if rec.data_inizio_incarico %}
+                <small style="background-color:yellow;">
+                  N.B. subentrato il {{ rec.data_inizio_incarico}}
+                </small>                
+                {% endif %}
             
-          </td>
-          <td class="centered">{{ rec.acronimo }}</td>
-          <td class="centered">{{ rec.circoscrizione }}</td>
-        </tr>
+              </p>
+            </td>
+            <td class="numeric-value">
+              <span class="value">{{ rec.indice|floatformat:1 }}</span>
+              <br />
+              <span class="small">(pos. {{rec.indice_pos}})</span>
+            </td>
+            <td class="numeric-value">
+              <span class="machine-sort" style="display:none">{{ rec.perc_assenze|multiply_by:100|floatformat:0 }}</span>            
+              <span class="value">{{ rec.perc_assenze|floatformat:2 }} % </span>
+              <br />
+              <span class="small">({{rec.assenze|floatformat:0}} {% trans "on" %} {{rec.votazioni|floatformat:0}})</span>
+          
+            </td>
+            <td class="centered">{{ rec.acronimo }}</td>
+            <td class="centered">{{ rec.circoscrizione }}</td>
+          </tr>
       {% endfor %}    
 
       </tr>

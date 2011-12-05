@@ -25,4 +25,3 @@ http://indice.staging.openpolis.it/umbria.html
 http://indice.staging.openpolis.it/valle-d-aosta.html
 http://indice.staging.openpolis.it/veneto-1.html
 http://indice.staging.openpolis.it/veneto-2.html
-http://indice.staging.openpolis.it/errore.html

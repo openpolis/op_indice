@@ -1,8 +1,10 @@
+from datetime import datetime
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.sites.models import Site
 from django.http import Http404
-from datetime import datetime
+
 from json_proxy import get_json_data
 
 def home(request, extraction_date, openparlamento_url, fetch_s3_images):
@@ -43,8 +45,12 @@ def mps(request, group_by, type, extraction_date, openparlamento_url):
     
   last_date = datetime.strftime(extraction_date, "%Y-%m-%d")
   json_url = "%s/%s?ramo=%s&data=%s" % (openparlamento_url, json_endpoint, tree, last_date)
-    
+  
+  import sys
+  print >> sys.stderr, "json url: %s" % json_url
+  
   records = get_json_data(json_url)
+  
   return render_to_response("charts/parlamentari_%s.html" % group_by, 
     { 
       'object_list': records, 

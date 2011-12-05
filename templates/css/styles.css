@@ -149,6 +149,7 @@ table.chart tbody th, table.chart tbody td  {
   border-top: 1px solid #fff; 
   color: #000;
 }
+
 table.chart tbody tr { padding-bottom: 3px; }
 table.chart tbody td.centered { text-align: center; }
 table.chart tbody tr.even { background-color: #ffffff; }
@@ -176,6 +177,8 @@ table.chart td span.small {
   font-size: 11px;
   color: #888;
 }
+
+table.chart tbody tr.yellow td{ background-color: lightyellow; }
 
 footer {
   margin: 0 12px;

@@ -83,6 +83,8 @@
     <input id="city" value="{% trans 'insert your city name' %}" />
   </section>
   
+  <h3>data: {{ extraction_date }}</h3>
+  
   <section id="top-deputati" class="top-chart">
     <h3>{% trans "Top 10 deputati" %}</h3>
     {% get_top 10 deputati as mps asof extraction_date %}
