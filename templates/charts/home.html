@@ -36,7 +36,7 @@
       $( "#city" ).autocomplete({
   			source: function( request, response ) {
   				$.ajax({
-  					url: "http://openpolis.it/json_getLocationsForIndiceAutocompleter",
+  					url: "http://www.openpolis.it/json_getLocationsForIndiceAutocompleter",
   					data: { 'name_starts_with': request.term },
   					crossDomain: true,
   					dataType: "jsonp",
@@ -68,37 +68,47 @@
 
 {% block content %}
   {% load charts_tags %}
-  <section id="intro-text">
-    <p style="margin-top:10px; margin-bottom:5px;">
-      <h2 style="font-size:24px;font-weight:bold;text-align:center;"><a href="http://camereaperte2011.openpolis.it">Scarica il rapporto "CAMERE APERTE 2011"</a><span style="font-size:12px;font-weight:normal;">&nbsp;&nbsp;[pdf, 1.2mb]</span></h2> 
-      <a href="info.html">L'Indice di Produttivit&agrave; Parlamentare</a> prende in considerazione la quantità e l'efficacia dell'attivit&agrave; realizzata da ogni Deputato e Senatore dall'inizio della Legislatura (aprile 2008) sino alla data dell'ultimo aggiornamento. Per conoscere nel dettaglio la metodologia di valutazione <a href="info.html">clicca qui</a>.<br/>
-      I dati, ricavati dai siti di Camera e Senato, sono elaborati quotidianamente da <a href="http://www.openparlamento.it">openparlamento</a>, la piattaforma per il monitoraggio civico e la valutazione del Parlamento italiano della <a href="http://associazione.openpolis.it">associazione openpolis</a>.<br/>
-      Per sapere qual &egrave; la produttività parlamentare dei tuoi rappresentanti, inserisci il nome del tuo Comune e avvia la ricerca.
-    </p> 
+    <section id="camere-aperte">
+      <p style="width: 90%; margin-top: 2em;">
+      <a href="#"><img src="/images/dossier-camere-aperte.png"/></a><br/>
+      Camere aperte 2011: il rapporto annuale di Openpolis sulla produttività dei nostri parlamentari.<br/>
+      > <a href="">Scarica il File PDF (2.1Mb)</a>
+      </p>
+    </section>
+    <section id="indice">
+      <p style="width: 80%; margin-top: 2em;">
+      L'Indice di Produttivit&agrave; Parlamentare prende in considerazione la quantità e l'efficacia dell'attivit&agrave; realizzata da ogni Deputato e Senatore dall'inizio della Legislatura (aprile 2008) sino alla data dell'ultimo aggiornamento. <br/>
+      I dati, ricavati dai siti di Camera e Senato, sono elaborati quotidianamente da <a href="http://www.openparlamento.it">Openparlamento</a>.
+      </p>
+    </section>
+    <section id="city-search" class="ui-widget">
+      <p style="width: 80%; margin-top: 2em">
+      <img src="/images/quanto-produttivi.png"/><br/>
+      <input id="city" value="{% trans 'insert your city name' %}" />
+      </p>
+    </section>
     
-  </section>
 
-  <section id="city-search" class="ui-widget">
-    <label for"city">{% trans "your MPs charts" %}</label><br/>
-    <input id="city" value="{% trans 'insert your city name' %}" />
-  </section>
-  
-  <h3>data: {{ extraction_date }}</h3>
-  
-  <section id="top-deputati" class="top-chart">
-    <h3>{% trans "Top 10 deputati" %}</h3>
-    {% get_top 10 deputati as mps asof extraction_date %}
-    {% include "charts/_mps_table_with_pictures.html" %}
-    <div class="link-to-all"><a href="/deputati.html">{% trans "go to the complete list" %}</a></div>
-  </section>
+    <h3 id="data-estrazione">data: {{ extraction_date }}</h3>
 
-  <section id="top-senatori" class="top-chart">
-    <h3>{% trans "Top 10 senatori" %}</h3>
-    {% get_top 10 senatori as mps asof extraction_date %}
-    {% include "charts/_mps_table_with_pictures.html" %}
-    <div class="link-to-all"><a href="/senatori.html">{% trans "go to the complete list" %}</a></div>
-  </section>
+  <section id="elenco-parlamentari">
   
+  
+    <section id="top-deputati" class="top-chart">
+      <h3>{% trans "Top 10 deputati" %}</h3>
+      {% get_top 10 deputati as mps asof extraction_date %}
+      {% include "charts/_mps_table_with_pictures.html" %}
+      <div class="link-to-all"><a href="/deputati.html">{% trans "go to the complete list" %}</a></div>
+    </section>
+
+    <section id="top-senatori" class="top-chart">
+      <h3>{% trans "Top 10 senatori" %}</h3>
+      {% get_top 10 senatori as mps asof extraction_date %}
+      {% include "charts/_mps_table_with_pictures.html" %}
+      <div class="link-to-all"><a href="/senatori.html">{% trans "go to the complete list" %}</a></div>
+    </section>
+
+  </section>  
 
 {% endblock %}
 

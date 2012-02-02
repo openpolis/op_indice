@@ -24,6 +24,9 @@ a {
   text-decoration: none; 
 }
 a:hover, a:active { color: #333; }
+a:hover {
+  text-decoration: underline;   
+}
 ul { list-style-type: none; }
 p { line-height: 1.2em; }
 
@@ -35,23 +38,24 @@ table tbody th {
 
 /* layout */
 
-#wrapper { min-width:1004px; width: auto !important; width: 1004px; margin: 1px auto 10px auto; }
+#wrapper { min-width:1004px; width: auto !important; width: 1004px; margin: 0px auto 10px auto; }
 #wrapper-800 { min-width:750px; width: auto !important; width: 750px; margin: 1px auto 10px auto; }
 
 header { 
-  margin: 0 12px;
+  margin: 0;
 }
 
 /* nav */
-nav { 
+nav#main { 
   background: #0a5264; 
-  min-height:24px; 
+  min-height:30px; 
   height: auto !important; 
   padding: 5px;
  }
 
-nav li { float: left;  }
-nav a, nav .active { 
+nav#main ul { margin-top: 5px; }
+nav#main li { float: left;  }
+nav#main a, nav#main .active { 
   color: #f4f2ea; 
   font-size: 18px; 
   padding: 2px 6px; 
@@ -61,13 +65,13 @@ nav a, nav .active {
   border-radius: 3px; 
   font-weight: bold; 
 }
-nav a:hover, nav .active { 
+nav#main a:hover, nav#main .active { 
   color: #f4f2ea; 
   background-color: #e27221; 
   text-decoration: none; 
 }
-#wrapper-800 nav { padding-left: 15px; }
-#wrapper-800 nav a, #wrapper-800 #nav .current { margin-right: 10px; }
+#wrapper-800 nav#main { padding-left: 15px; }
+#wrapper-800 nav#main a, #wrapper-800 nav#main .current { margin-right: 10px; }
 
 nav#sub {
   font-size: 14px;
@@ -87,12 +91,11 @@ nav#sub a {
 
 
 #logos {
-  background: url("/images/bg-header.png") repeat-x -10px;
   border-top-left-radius: 5px 5px;
   border-top-right-radius: 5px 5px;
   color: white;
   font-size: 11px;
-  height: 86px;
+  height: 157px;
   padding: 0;
 }
 
@@ -100,22 +103,25 @@ nav#sub a {
   float: left;
   font-size: 250%;
   margin-top: 0px;
-  margin-left: 150px;
+  margin-left: 5px;
+}
+
+#logos h1 a#logo-strumento-openpolis {
+   margin-left: -20px;
 }
 
 
 
 #main {
-  margin: 0 12px;
-  padding-top: 30px;
+  margin: 0;
   background-color: #FFF;
   overflow: hidden;
 }
 
 #content {
-  width: 96%;
+  width: 100%;
   float: left;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 
 
@@ -181,7 +187,7 @@ table.chart td span.small {
 table.chart tbody tr.yellow td{ background-color: lightyellow; }
 
 footer {
-  margin: 0 12px;
+  margin: 0;
   clear: both;
 }
 
@@ -232,7 +238,7 @@ margin-right: auto;
 
 #intro-text {
   font-size: 16px;
-  margin: 0.5em 0 1em 0;
+  margin: 0;
   padding: 0 0.5em;
   line-height: 1.4em;
 }
@@ -254,10 +260,10 @@ margin-right: auto;
 }
 
 #top-deputati h3 {
-  background-color: #3c8cb5;
+  background-color: #002365;
 }
 #top-senatori h3 {
-  background-color: #f3b846;
+  background-color: #851018;
 }
 
 
@@ -276,26 +282,142 @@ margin-right: auto;
 }
 
 .top-chart table.chart th { padding-top: 0px; }
-#city-search {
-  text-align: left;
-  width: 35%;
-  margin: 0 auto;
-  margin-bottom: 1em;
-  clear: both;
+
+#camere-aperte {
+  background: url("/images/bg-green-band.png") repeat-x -10px;
+  height: 252px;
+  width: 20%;
+  float: left;
 }
 
-#city-search label {
-  font-size: 18px;
-  color: #789FBB;
-  padding: 15px 0 25px 0;
-  font-weight: bold;
+
+#indice {
+  background: url("/images/bg-green-band-2.png") repeat-x -10px;
+  height: 252px;
+  width: 20%;
+  float: left;
 }
+
+#indice p, #camere-aperte p, #city-search p { 
+  margin: 0 auto;
+  color: white;
+  font-size: 14px;
+}
+
+#indice p a, #camere-aperte p a {
+  text-decoration: underline;
+  color: white;
+}
+
+
+
+#city-search {
+  background: url("/images/bg-green-band-2.png") repeat-x -10px;
+  height: 252px;
+  text-align: left;
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  float: left;
+}
+
 #city-search input {
+  float: right;
+  margin-top: 1em;
+  margin-right: 2em;
   font-size: 18px;
   color: #999;
 }
 
+h3#data-estrazione {
+  font-size: 14px; 
+  color: gray;
+  float: right;
+  margin-right: 2em;
+}
+
+#elenco-parlamentari {
+  clear: both;
+  margin: 1em;
+}
 #language-selector { color: white; font-size: 12px;}
+
+nav, section { display: block; }
+.container {
+padding-left: 20px;
+padding-right: 20px;
+}
+.row {
+    width: 100%;
+    max-width: 1140px;
+    min-width: 755px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+footer.container {
+font-size: 0.9em;
+line-height: 1.5em;
+padding-top: 15px;
+background-color: #E4E3DE;
+}
+footer.container h3, footer.container h4 {
+font-family: helvetica;
+margin-top: 20px;
+}
+footer.container h3 {
+margin-bottom: 5px;
+font-size: 1.2em;
+}
+footer p, footer ul {
+margin-bottom: 8px;
+line-height: 1.5em;
+}
+footer ul, ul.dotted-list {
+list-style-type: none;
+}
+footer ul li, ul.dotted-list li {
+padding-left: 0.6em;
+background: transparent url('../images/dot.png') 0 .6em no-repeat;
+}
+footer.container a {
+    color: #333; 
+}
+.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
+margin-right: 3.8%;
+float: left;
+min-height: 1px;
+}
+.row .twocol {
+    width: 13.45%;
+}
+.row .threecol {
+    width: 22.05%;
+}
+.row .sixcol {
+    width: 48%;
+}
+.row .elevencol {
+width: 91.35%;
+}
+.row .last {
+margin-right: 0px;
+}
+.row .prefixone {
+margin-left: 8.65%;
+}
+.row .prefixsix {
+margin-left: 51.6%;
+}
+
+#sub-footer {
+text-align: center;
+margin-top: 25px;
+}
+#sub-footer ul { margin:0 auto; }
+#sub-footer ul li {
+display: inline-block;
+padding:0;
+}
 
 
 #footer-area {
@@ -317,4 +439,25 @@ margin-right: auto;
   margin-left: 20px;
   width: 190px;
 }
+
+span.icon {
+    background: transparent url(../images/icons/sprite-social-icons.png) no-repeat;
+    margin: 0 7px;
+    display: inline-block; float: left;
+    height: 27px; line-height: 27px; 
+    width: 30px; max-width: 30px;
+    overflow: hidden; text-indent: -9999px;	
+}
+
+/* Sprite Row 1 */
+span.trac {             background-position: -0px   -0px;   }
+span.trac:hover {       background-position: -0px   -27px;  }
+span.google {           background-position: -30px  -0px;   }
+span.google:hover {     background-position: -30px  -27px;  }
+span.facebook {         background-position: -60px  -0px;   }
+span.facebook:hover {   background-position: -60px  -27px;  }
+span.feed {             background-position: -90px  -0px;   }
+span.feed:hover {       background-position: -90px  -27px;  }
+span.twitter {          background-position: -120px -0px;   }
+span.twitter:hover {    background-position: -120px -27px;  }
 
