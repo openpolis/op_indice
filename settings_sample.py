@@ -9,14 +9,10 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Guglielmo Celata', 'guglielmo@openpolis.it'),
+    ('Guglielmo Celata', 'me@system.ti'),
 )
 
-MANAGERS = ADMINS + (
-    ('Daniele Faraglia', 'daniele@openpolis.it'),
-    ('Vincenzo Smaldore', 'vincenzo@openpolis.it'),
-    ('Mariachiara Manopulo', 'mariachiara@openpolis.it'),
-)
+MANAGERS = ADMINS + ()
 
 
 DATABASES = {
