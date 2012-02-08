@@ -5,50 +5,90 @@
 {% block title %}| {% trans "About" %}{% endblock %}
 {% block methodology_class %}class="active"{% endblock %}
 
+{% block sub_nav %}
+<a name="su"></a>
+<div class="subnav">
+  <ul class="nav nav-pills">
+    <li><a href="#metodo">la metodologia</a></li>
+    <li><a href="#criterio">i criteri</a></li>
+    <li><a href="#consenso">il consenso</a></li>
+    <li><a href="#iter">l'iter</a></li>
+    <li><a href="#partecipazione">la partecipazione ai lavori</a></li>
+    <li><a href="#relatori">i relatori in casi particolari</a></li>
+    <li><a href="#emendamenti">gli emendamenti</a></li>
+    <li><a href="#tabella">la tabella di valutazione</a></li>
+  </ul>
+</div>
+{% endblock %}
 
 {% block content %}
-  <section id="intro-text">
     
-    <a name="su"></a>
-    <a href="#metodo">la metodologia</a> | <a href="#criterio">i criteri</a> | <a href="#consenso">il consenso</a> | <a href="#iter">l'iter</a> | <a href="#partecipazione">la partecipazione ai lavori</a> | <a href="#relatori">i relatori in casi particolari</a> | <a href="#emendamenti">gli emendamenti</a> | <a href="#tabella">la tabella di valutazione</a>
-    <br/><br/>
-    <a name="metodo"></a><span style="font-size:18px;font-weight:bold;">La metodologia</span>&nbsp;&nbsp;<span style="font-size:11px;font-weight:normal;">[<a href="#su">torna su</a>]</span><br/>
-    Lo diciamo subito a scanso di equivoci, non siamo alla ricerca della formula magica per calcolare la buona politica. Non pretendiamo, né vogliamo far credere, che il lavoro, e in particolare quello politico, possa essere ridotto a unità fisiche omogenee e misurato a chili o a metri.<br/>
-    Pensiamo che la funzione, o, se si preferisce, l'incarico e la missione, che i rappresentanti svolgono nelle istituzioni, possano essere, come e più di altri lavori, soggetti a valutazione.<br/> 
-    Crediamo nella possibilità, ma anche nella necessità, collettiva di sviluppare un metodo non esatto ma affidabile, perché basato su criteri trasparenti, pubblicamente discussi ed emendabili, che serva a conoscere e capire meglio la politica e chi la fa.<br/>
-    La nostra ambizione è di mettere a disposizione strumenti che aiutino a leggere e interpretare una realtà complessa come quella dell'attività parlamentare partendo, però, dai dati ufficiali, quelli forniti dal Parlamento stesso, invece che da giudizi e opinioni preconfezionati.<br/> 
-    Valutare, in questo senso, significa trovare un modo per fare confronti, per verificare, magari in corso d'opera, se l'impegno politico corrisponda alle attese o alle promesse, avere insomma un riscontro con elementi di realtà, prima e oltre la propaganda.<br/>
-    Eccoci dunque alla seconda edizione dell'Indice di Attività Parlamentare, cui siamo arrivati dopo confronti con ricercatori e addetti ai lavori, ma soprattutto dopo avere coinvolto "l'oggetto stesso della valutazione", i parlamentari che, a seguito di una consultazione a cui hanno partecipato in 160, ci hanno dato i suggerimenti e gli spunti più interessanti. Sintetizzando molto il ragionamento, possiamo dire che il passaggio dalla prima alla seconda versione dell'indice segna il tentativo di prendere in considerazione non più solo la "quantità" del lavoro svolto ma anche "il risultato", in termini parlamentari, ottenuto.<br/> 
-    Se sinora abbiamo valutato l'attività svolta, ossia, di fatto, quanti atti il parlamentare presenta in un dato periodo di tempo, ora introduciamo criteri per il calcolo di quanto quella attività sia stata effettivamente produttiva. Quindi andiamo a vedere che fine hanno fatto gli atti presentati dal parlamentare, quanti sono stati discussi, votati o diventati legge, quanti, invece, sono rimasti solo intenzioni. La nuova versione l'abbiamo chiamata perciò Indice di Produttività, perché introduce dei criteri di valutazione dell'efficacia del lavoro, suggeriti anche da molti degli stessi Deputati e Senatori che lamentavano come la grandissima parte degli atti presentati, serva solo a dare contentini a gruppi di pressione, clientele e elettorati di riferimento. Si presenta la tale interrogazione che nessuno prenderà mai in considerazione o il tale DDL che non giungerà mai neppure all'esame della Commissione, solo per far vedere a qualcuno che si fa qualcosa. Con le uniche conseguenze pratiche di intasare gli uffici di carta. In un contesto simile, limitarsi a calcolare la quantità rischia di tradursi nel valutare il nulla, o peggio il danno. Dunque bisogna distinguere, per poter riconoscere dove c'è lavoro, lavoro politico, importanza del provvedimento e dove invece ce n'è poco o nulla.<br/>
-    Ma non entriamo mai nel merito di quanto un atto propone o dispone, non diciamo se un disegno di legge o una mozione debbano essere giudicati bene o male. Le distinzioni non riguardano la qualità di quanto prodotto ma "solo" quale e quanto sia stato il contributo del singolo Deputato e Senatore alla produzione di leggi, voti, discussioni, emendamenti, interrogazioni, etc. del Parlamento in un determinato periodo di tempo. I criteri e i parametri utilizzati sono indicati di seguito.<br/> 
-    Occorre solo un'altra premessa che crediamo importante per evitare fraintendimenti. Quando parliamo di Produttività non intendiamo dire chi lavora e chi no in Parlamento. Ci concentriamo solo ed esclusivamente su quella parte del lavoro parlamentare volto alla proposta, discussione, elaborazione ed approvazione di atti legislativi e non legislativi. Nell'Indice di Produttività attualmente non calcoliamo il lavoro politico e istituzionale, che può essere anche molto oneroso, collegato allo svolgimento degli incarichi parlamentari come quello di Presidente o Vicepresidente di Assemblea (di Commissione, Giunta, Comitato, etc.), Capogruppo, Questore, etc.<br/>
+  <section id="info-text">
 
-    <br/>
-     <a name="criterio"></a><span style="font-size:18px;font-weight:bold;">I criteri</span>&nbsp;&nbsp;<span style="font-size:11px;font-weight:normal;">[<a href="#su">torna su</a>]</span><br/>
-    I criteri che vengono presi in considerazione per la definizione dell'algoritmo con cui viene calcolato l'Indice di Produttività sono:<br/>
-    - la tipologia di atto<br/>
-    - il consenso ricevuto dall'atto<br/>
-    - il suo iter<br/>
-    - la partecipazione del parlamentare ai lavori.<br/> 
-    Ad ognuno di questi criteri vengono associati dei parametri, indicati nella tabella, che combinati tra loro permettono di attribuire a ciascun Deputato e Senatore un valore numerico per ogni atto presentato in Parlamento o di cui sono stati relatori.<br/>
-    Il consenso - ossia le firme ottenute da parte di altri parlamentari - e l'iter - quanta strada riesce a fare un atto in Parlamento - sono i fattori in base ai quali viene calcolato il peso specifico di ciascun provvedimento.<br/> 
-    Il valore così acquisito dal singolo atto viene assegnato al suo "autore", a chi cioè ne risulta primo firmatario e al relatore (al quale però non viene attribuito il consenso).<br/>
-    Infine ad ogni parlamentare viene riconosciuto un punteggio per la partecipazione, in generale, ai lavori in Commissione e in Aula, computando sia gli interventi effettuati che le presenze alle votazioni.<br/>
-    La somma di questi valori, il punteggio dei singoli atti a cui il parlamentare ha contribuito direttamente, aggiunto al valore della partecipazione, fornisce l'Indice di Produttività del singolo Deputato e Senatore in un dato periodo di tempo.<br/> 
-    Chiaramente la definizione dei parametri comporta un inevitabile margine di aleatorietà e di imprecisione. Attribuendo un dato peso ad un'altra fase dell'iter di un atto, intendiamo dare una stima media del suo valore relativamente ad un altro passaggio di iter, che può essere ritenuto più o meno importante.<br/>
-    Ci siamo chiesti, e abbiamo chiesto, quanto possa valere "in media" la presentazione di un DDL rispetto a un'interrogazione, la discussione in Commissione a confronto di una votazione o approvazione in Aula di un DDL.<br/> 
-    Si tratta, necessariamente, di una semplificazione della realtà dove, si sa, ogni caso può essere un caso a sé e dove il singolo ordine del giorno, che in genere - come si dice - non si nega a nessuno, potrebbe valere politicamente anche molto di più di una legge.<br/>
-    Ma qui, lo ripetiamo, non si tratta di misurazioni esatte bensì di offrire metodi e strumenti di valutazione che restituiscano rappresentazioni della realtà non certo perfette, ma che abbiano un certo grado di affidabilità che diano ragione delle differenze principali.<br/> 
-    I ruoli presi in esame ai fini dell'Indice di Produttività sono quelli di Primo Firmatario e di Relatore, cioè di coloro ai quali, almeno sul piano formale, va attribuito il merito principale dell'esito eventualmente positivo di un atto. E' noto come a volte il piano formale, chi presenta l'atto, non coincida con quello sostanziale, chi effettivamente ha lavorato alla sua predisposizione e al suo successo. Questo per varie ragioni, variamente argomentate di volta in volta e che in sostanza appartengono alla opportunità politica, al tatticismo e comunque a tutto quell'armamentario dell'arcana imperii parlamentare che niente ha a che vedere con la chiarezza e l'intelligibilità delle responsabilità dei rappresentanti nei riguardi dei cittadini. Pertanto attraverso l'Indice non possiamo che prendere in considerazione i dati di fatto ufficiali e sperare di contribuire ad un'aderenza sempre maggiore tra questi e la realtà, in modo che i cittadini possano sapere a chi riconoscere meriti e demeriti relativi.<br/> 
-    Al Primo firmatario di un atto viene attribuito il punteggio dell'iter sommato a quello del consenso. Mentre al Relatore di un DDL viene assegnato soltanto il punteggio dell'iter perché si presume che il lavoro politico necessario a guadagnare il consenso sia preliminare alla presentazione dell'atto, mentre quello necessario al suo avanzamento nell'iter, possa essere mediamente condiviso tra il presentatore e il relatore, che in sostanza ha il compito di difenderlo e di gestire le mediazioni necessarie alla sua approvazione finale, perché sia la più larga possibile.<br/>
+    <div id="metodo" class="anchored-content">
+      <a name="metodo"></a>
+      <section class="header">
+        <h3>La metodologia</h3>
+        <small>[<a href="#su">torna su</a>]</small>
+      </section>
+      <section class="content">
+      Lo diciamo subito a scanso di equivoci, non siamo alla ricerca della formula magica per calcolare la buona politica. Non pretendiamo, né vogliamo far credere, che il lavoro, e in particolare quello politico, possa essere ridotto a unità fisiche omogenee e misurato a chili o a metri.<br/>
+      Pensiamo che la funzione, o, se si preferisce, l'incarico e la missione, che i rappresentanti svolgono nelle istituzioni, possano essere, come e più di altri lavori, soggetti a valutazione.<br/> 
+      Crediamo nella possibilità, ma anche nella necessità, collettiva di sviluppare un metodo non esatto ma affidabile, perché basato su criteri trasparenti, pubblicamente discussi ed emendabili, che serva a conoscere e capire meglio la politica e chi la fa.<br/>
+      La nostra ambizione è di mettere a disposizione strumenti che aiutino a leggere e interpretare una realtà complessa come quella dell'attività parlamentare partendo, però, dai dati ufficiali, quelli forniti dal Parlamento stesso, invece che da giudizi e opinioni preconfezionati.<br/> 
+      Valutare, in questo senso, significa trovare un modo per fare confronti, per verificare, magari in corso d'opera, se l'impegno politico corrisponda alle attese o alle promesse, avere insomma un riscontro con elementi di realtà, prima e oltre la propaganda.<br/>
+      Eccoci dunque alla seconda edizione dell'Indice di Attività Parlamentare, cui siamo arrivati dopo confronti con ricercatori e addetti ai lavori, ma soprattutto dopo avere coinvolto "l'oggetto stesso della valutazione", i parlamentari che, a seguito di una consultazione a cui hanno partecipato in 160, ci hanno dato i suggerimenti e gli spunti più interessanti. Sintetizzando molto il ragionamento, possiamo dire che il passaggio dalla prima alla seconda versione dell'indice segna il tentativo di prendere in considerazione non più solo la "quantità" del lavoro svolto ma anche "il risultato", in termini parlamentari, ottenuto.<br/> 
+      Se sinora abbiamo valutato l'attività svolta, ossia, di fatto, quanti atti il parlamentare presenta in un dato periodo di tempo, ora introduciamo criteri per il calcolo di quanto quella attività sia stata effettivamente produttiva. Quindi andiamo a vedere che fine hanno fatto gli atti presentati dal parlamentare, quanti sono stati discussi, votati o diventati legge, quanti, invece, sono rimasti solo intenzioni. La nuova versione l'abbiamo chiamata perciò Indice di Produttività, perché introduce dei criteri di valutazione dell'efficacia del lavoro, suggeriti anche da molti degli stessi Deputati e Senatori che lamentavano come la grandissima parte degli atti presentati, serva solo a dare contentini a gruppi di pressione, clientele e elettorati di riferimento. Si presenta la tale interrogazione che nessuno prenderà mai in considerazione o il tale DDL che non giungerà mai neppure all'esame della Commissione, solo per far vedere a qualcuno che si fa qualcosa. Con le uniche conseguenze pratiche di intasare gli uffici di carta. In un contesto simile, limitarsi a calcolare la quantità rischia di tradursi nel valutare il nulla, o peggio il danno. Dunque bisogna distinguere, per poter riconoscere dove c'è lavoro, lavoro politico, importanza del provvedimento e dove invece ce n'è poco o nulla.<br/>
+      Ma non entriamo mai nel merito di quanto un atto propone o dispone, non diciamo se un disegno di legge o una mozione debbano essere giudicati bene o male. Le distinzioni non riguardano la qualità di quanto prodotto ma "solo" quale e quanto sia stato il contributo del singolo Deputato e Senatore alla produzione di leggi, voti, discussioni, emendamenti, interrogazioni, etc. del Parlamento in un determinato periodo di tempo. I criteri e i parametri utilizzati sono indicati di seguito.<br/> 
+      Occorre solo un'altra premessa che crediamo importante per evitare fraintendimenti. Quando parliamo di Produttività non intendiamo dire chi lavora e chi no in Parlamento. Ci concentriamo solo ed esclusivamente su quella parte del lavoro parlamentare volto alla proposta, discussione, elaborazione ed approvazione di atti legislativi e non legislativi. Nell'Indice di Produttività attualmente non calcoliamo il lavoro politico e istituzionale, che può essere anche molto oneroso, collegato allo svolgimento degli incarichi parlamentari come quello di Presidente o Vicepresidente di Assemblea (di Commissione, Giunta, Comitato, etc.), Capogruppo, Questore, etc.<section/>
+    </div>
 
-    <br/>
-     <a name="consenso"></a><span style="font-size:18px;font-weight:bold;">Il consenso</span>&nbsp;&nbsp;<span style="font-size:11px;font-weight:normal;">[<a href="#su">torna su</a>]</span><br/> 
-    Con questo criterio si intende valutare la quantità e la tipologia di gradimento che il presentatore (Primo firmatario) di un atto riesce ad ottenere presso i suoi colleghi.<br/>
-    La presunzione di partenza è che più un atto ottiene consenso e maggiore è il suo valore politico. Valore che sarà più alto nel caso in cui il consenso dovesse essere differenziato, con sostegni provenienti da altri gruppi, o, a maggior ragione, da gruppi appartenenti allo schieramento opposto.<br/> 
+   <div id="criterio" class="anchored-content">
+     <a name="criterio"></a>
+     <section class="header">
+       <h3>I criteri</h3>
+       <small>[<a href="#su">torna su</a>]</small>
+     </section>
+     <section class="content">
+      I criteri che vengono presi in considerazione per la definizione dell'algoritmo con cui viene calcolato l'Indice di Produttività sono:<br/>
+      - la tipologia di atto<br/>
+      - il consenso ricevuto dall'atto<br/>
+      - il suo iter<br/>
+      - la partecipazione del parlamentare ai lavori.<br/> 
+      Ad ognuno di questi criteri vengono associati dei parametri, indicati nella tabella, che combinati tra loro permettono di attribuire a ciascun Deputato e Senatore un valore numerico per ogni atto presentato in Parlamento o di cui sono stati relatori.<br/>
+      Il consenso - ossia le firme ottenute da parte di altri parlamentari - e l'iter - quanta strada riesce a fare un atto in Parlamento - sono i fattori in base ai quali viene calcolato il peso specifico di ciascun provvedimento.<br/> 
+      Il valore così acquisito dal singolo atto viene assegnato al suo "autore", a chi cioè ne risulta primo firmatario e al relatore (al quale però non viene attribuito il consenso).<br/>
+      Infine ad ogni parlamentare viene riconosciuto un punteggio per la partecipazione, in generale, ai lavori in Commissione e in Aula, computando sia gli interventi effettuati che le presenze alle votazioni.<br/>
+      La somma di questi valori, il punteggio dei singoli atti a cui il parlamentare ha contribuito direttamente, aggiunto al valore della partecipazione, fornisce l'Indice di Produttività del singolo Deputato e Senatore in un dato periodo di tempo.<br/> 
+      Chiaramente la definizione dei parametri comporta un inevitabile margine di aleatorietà e di imprecisione. Attribuendo un dato peso ad un'altra fase dell'iter di un atto, intendiamo dare una stima media del suo valore relativamente ad un altro passaggio di iter, che può essere ritenuto più o meno importante.<br/>
+      Ci siamo chiesti, e abbiamo chiesto, quanto possa valere "in media" la presentazione di un DDL rispetto a un'interrogazione, la discussione in Commissione a confronto di una votazione o approvazione in Aula di un DDL.<br/> 
+      Si tratta, necessariamente, di una semplificazione della realtà dove, si sa, ogni caso può essere un caso a sé e dove il singolo ordine del giorno, che in genere - come si dice - non si nega a nessuno, potrebbe valere politicamente anche molto di più di una legge.<br/>
+      Ma qui, lo ripetiamo, non si tratta di misurazioni esatte bensì di offrire metodi e strumenti di valutazione che restituiscano rappresentazioni della realtà non certo perfette, ma che abbiano un certo grado di affidabilità che diano ragione delle differenze principali.<br/> 
+      I ruoli presi in esame ai fini dell'Indice di Produttività sono quelli di Primo Firmatario e di Relatore, cioè di coloro ai quali, almeno sul piano formale, va attribuito il merito principale dell'esito eventualmente positivo di un atto. E' noto come a volte il piano formale, chi presenta l'atto, non coincida con quello sostanziale, chi effettivamente ha lavorato alla sua predisposizione e al suo successo. Questo per varie ragioni, variamente argomentate di volta in volta e che in sostanza appartengono alla opportunità politica, al tatticismo e comunque a tutto quell'armamentario dell'arcana imperii parlamentare che niente ha a che vedere con la chiarezza e l'intelligibilità delle responsabilità dei rappresentanti nei riguardi dei cittadini. Pertanto attraverso l'Indice non possiamo che prendere in considerazione i dati di fatto ufficiali e sperare di contribuire ad un'aderenza sempre maggiore tra questi e la realtà, in modo che i cittadini possano sapere a chi riconoscere meriti e demeriti relativi.<br/> 
+      Al Primo firmatario di un atto viene attribuito il punteggio dell'iter sommato a quello del consenso. Mentre al Relatore di un DDL viene assegnato soltanto il punteggio dell'iter perché si presume che il lavoro politico necessario a guadagnare il consenso sia preliminare alla presentazione dell'atto, mentre quello necessario al suo avanzamento nell'iter, possa essere mediamente condiviso tra il presentatore e il relatore, che in sostanza ha il compito di difenderlo e di gestire le mediazioni necessarie alla sua approvazione finale, perché sia la più larga possibile.
+    </section>
+  </div>
 
-    <br/>
-     <a name="iter"></a><span style="font-size:18px;font-weight:bold;">L'iter</span>&nbsp;&nbsp;<span style="font-size:11px;font-weight:normal;">[<a href="#su">torna su</a>]</span><br/>
+
+   <div id="consenso" class="anchored-content">
+     <a name="consenso"></a>
+     <section class="header">
+       <h3>Il consenso</h3>
+       <small>[<a href="#su">torna su</a>]</small>
+     </section>
+     <section class="content">
+  Con questo criterio si intende valutare la quantità e la tipologia di gradimento che il presentatore (Primo firmatario) di un atto riesce ad ottenere presso i suoi colleghi.<br/>
+  La presunzione di partenza è che più un atto ottiene consenso e maggiore è il suo valore politico. Valore che sarà più alto nel caso in cui il consenso dovesse essere differenziato, con sostegni provenienti da altri gruppi, o, a maggior ragione, da gruppi appartenenti allo schieramento opposto.
+    </section>
+  </div>
+
+   <div id="iter" class="anchored-content">
+     <a name="iter"></a>
+     <section class="header">
+       <h3>L'iter</h3>
+       <small>[<a href="#su">torna su</a>]</small>
+     </section>
+     <section class="content">
     Ogni atto parlamentare ha un iter che consiste nella successione delle fasi necessarie al suo completamento. Questi passaggi possono essere pochi o molti secondo il tipo di atto.<br/>
     L'iter più complesso è certamente quello degli atti che sono destinati a produrre norme di legge, ossia i Disegni o Progetti di Legge. Ora, dal punto di vista della produttività parlamentare, ogni tappa raggiunta o superata da un atto verso il suo traguardo finale, fa acquisire punteggio all'atto, e, di conseguenza, al suo presentatore e al relatore.<br/>
     I parametri che abbiamo assegnato alla presentazione di un atto sono oggettivamente molto bassi, prossimi allo zero e con differenze insignificanti tra una tipologia di atto e l'altro. I punti vengono acquisiti, e anche molti, man mano che si conquistano tappe nel viaggio parlamentare.<br/>
@@ -58,23 +98,85 @@
     Per questo un passaggio di iter ottenuto da un membro dell'opposizione viene valutato, con il nostro Indice, il doppio rispetto ad un parlamentare di maggioranza.<br/>
     Tuttavia se l'attività legislativa inevitabilmente avvantaggia la maggioranza, d'altro canto quella non legislativa (interrogazioni, interpellanze, odg, etc.) è tradizionalmente più appannaggio delle opposizioni e dunque, in linea di massima, questa distribuzione di ruoli in Parlamento restituisce un certo equilibrio.<br/>
     Questo viene in qualche modo confermato sia dalle classifiche in base alla Produttività, dove troviamo parlamentari di maggioranza e opposizione in maniera piuttosto uniforme nelle posizioni di testa e di coda, sia da quelle dei ruoli.<br/> 
+    </section>
+  </div>
 
-    <br/>
-     <a name="partecipazione"></a><span style="font-size:18px;font-weight:bold;">La partecipazione ai lavori</span>&nbsp;&nbsp;<span style="font-size:11px;font-weight:normal;">[<a href="#su">torna su</a>]</span><br/>
+
+   <div id="partecipazione" class="anchored-content">
+     <a name="partecipazione"></a>
+     <section class="header">
+       <h3>La partecipazione ai lavori</h3>
+       <small>[<a href="#su">torna su</a>]</small>
+     </section>
+     <section class="content">
     Il contributo del parlamentare ai lavori della Camera di appartenenza si esprime anche attraverso la partecipazione alla fase della discussione e a quella della decisione e quindi nell'Indice di Produttività calcoliamo gli interventi in Commissione e in Aula e le votazioni.<br/>
     Ma la presenza al voto non ha sempre lo stesso valore politico, pertanto abbiamo distinto la votazione, diciamo, ordinaria dal voto finale con cui si approva una legge, dal voto in cui la maggioranza è risultata battuta. Alle ultime due riconosciamo un peso, rispettivamente, di 100 e 300 volte superiore al voto ordinario perché sono momenti qualificanti di una legislatura.<br/> 
+    </section>
+  </div>
 
-    <br/>
-     <a name="relatori"></a><span style="font-size:18px;font-weight:bold;">I relatori in casi particolari</span>&nbsp;&nbsp;<span style="font-size:11px;font-weight:normal;">[<a href="#su">torna su</a>]</span><br/>
+   <div id="relatori" class="anchored-content">
+     <a name="relatori"></a>
+     <section class="header">
+       <h3>I relatori in casi particolari</h3>
+       <small>[<a href="#su">torna su</a>]</small>
+     </section>
+     <section class="content">
     Nei casi di ratifiche di trattati o convenzioni internazionali al relatore viene attribuito un punteggio dieci volte inferiore a quello di un DDL ordinario, perché si tratta, nella normalità dei casi, di ratifiche formali di atti che hanno già il consenso del Governo e spesso delle opposizioni e che quindi mettono in gioco assai meno il ruolo politico del relatore.<br/>
     Nel caso, poi, di atti unificati e atti assorbiti, quando il relatore è lo stesso, questo viene contato una sola volta onde evitare l'effetto di distorsione causato dal punteggio di relatore moltiplicato per 20 o 30 volte, tanti quanti possono essere i DDL assorbiti o unificati, che poi, in sostanza, confluiscono in un unico DDL.<br/>
+    </section>
+  </div>
 
-    <br/>
-     <a name="emendamenti"></a><span style="font-size:18px;font-weight:bold;">Gli emendamenti</span>&nbsp;&nbsp;<span style="font-size:11px;font-weight:normal;">[<a href="#su">torna su</a>]</span><br/>
+   <div id="emendamenti" class="anchored-content">
+     <a name="emendamenti"></a>
+     <section class="header">
+       <h3>Gli emendamenti</h3>
+     </section>
+     <section class="content">
     La facoltà di presentare emendamenti viene a volte interpretata in maniera ostruzionistica dai parlamentari che vogliono opporsi ad un determinato provvedimento.<br/>
     Per cui si presentano centinaia, a volte migliaia di emendamenti al fine di impedire o ritardare l'approvazione dell'atto contrastato. Per tenere conto di questa dinamica, obiettivamente differente da quella degli altri atti, abbiamo fatto ricorso ad una funzione che permette di assegnare agli emendamenti presentati da un parlamentare sul singolo atto, un punteggio crescente in fase iniziale (da 1 a 50), che poi cresce meno (da 50 a 100) e in seguito sempre meno sino ad un massimo (300) oltre il quale ogni ulteriore emendamento non aggiunge nulla al punteggio finale.<br/>
-    <br/>
-    <a name="tabella"></a><span style="font-size:18px;font-weight:bold;">La tabella di valutazione</span>&nbsp;&nbsp;<span style="font-size:11px;font-weight:normal;">[<a href="#su">torna su</a>]</span><br/>
-    <img src="https://s3-eu-west-1.amazonaws.com/op-images/tabella_indice_piccola.png" border=0 />
-  </section>
+    </section>
+  </div>
+
+  <div id="tabella" class="anchored-content">
+    <a name="tabella"></a>
+    <section class="header">
+      <h3>La tabella di valutazione</h3>
+      <small>[<a href="#su">torna su</a>]</small>
+    </section>
+    <section class="content">
+      <img src="https://s3-eu-west-1.amazonaws.com/op-images/tabella_indice_piccola.png" border=0 />
+    </section>
+  </div>
+</section>
+{% endblock %}
+
+{% block js_footer %}
+  {{ block.super }}
+
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() { 
+
+      // fix sub nav on scroll
+      var $win = $(window)
+        , $nav = $('.subnav')
+        , navTop = $('.subnav').length && $('.subnav').offset().top + 80
+        , isFixed = 0
+
+      processScroll()
+
+      $win.on('scroll', processScroll)
+
+      function processScroll() {
+        var i, scrollTop = $win.scrollTop()
+        
+        if (scrollTop >= navTop && !isFixed) {
+          isFixed = 1
+          $nav.addClass('subnav-fixed')
+        } else if (scrollTop <= navTop && isFixed) {
+          isFixed = 0
+          $nav.removeClass('subnav-fixed')
+        }
+      }
+    });
+  </script>  
 {% endblock %}
