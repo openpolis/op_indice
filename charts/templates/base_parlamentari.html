@@ -3,13 +3,6 @@
 
 {% block title %}| {{ type }}{% endblock %}
 
-{% block head_includes %}
-  <link rel="stylesheet" href="/css/tablesorter_themes/blue/style.css" type="text/css" media="print, projection, screen">
-  <script type="text/javascript" src="/javascripts/jquery-1.4.3.min.js"></script>
-  <script type="text/javascript" src="/javascripts/jquery.metadata.js"></script>
-  <script type="text/javascript" src="/javascripts/jquery.tablesorter.min.js"></script>
-{% endblock %}
-
 {% block deputati_class %}
   {% if type == 'deputati' %}
     class="active"
@@ -24,7 +17,7 @@
 
 {% block sub_nav %}
   <nav id="sub"><!-- sub nav -->
-    <ul>
+    <ul class="nav nav-pills">
       <li id="sub-nav-list">
         <a href="/{{type|lower}}.html" {% block list_class %}{% endblock %}>{% trans "complete list" %}</a>
       </li>
@@ -45,5 +38,16 @@
   <div style="text-align: right; margin: 1.5em 0; font-size: 13px">
     {% blocktrans %}Data extracted on{% endblocktrans %} {{  extraction_date|date:"DATE_FORMAT" }}
   </div>
+{% endblock %}
+
+{% block css_styles %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{{STATIC_URL}}css/tablesorter_themes/blue/style.css" type="text/css" media="print, projection, screen">
+{% endblock %}
+
+{% block js_footer %}
+  {{ block.super }}
+  <script type="text/javascript" src="{{STATIC_URL}}js/jquery.metadata.js"></script>
+  <script type="text/javascript" src="{{STATIC_URL}}js/jquery.tablesorter.min.js"></script>
 {% endblock %}
 

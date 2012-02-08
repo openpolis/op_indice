@@ -2,3 +2,10 @@ settings.py
 op_indice.db
 apache/*
 mirror_s3sync.txt
+settings_local.py
+urls_local.py
+settings_staging.py
+urls_staging.py
+settings_prod.py
+urls_prod.py
+web/*

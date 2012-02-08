@@ -46,23 +46,3 @@ urlpatterns = patterns('',
                                  'fetch_s3_images': settings.FETCH_S3_IMAGES }),    
 )
 
-# static media (not for production!)
-if (settings.ENVIRONMENT != 'production'):
-  urlpatterns += patterns('',
-    (r'^robots.txt$', 'django.views.static.serve', 
-      { 'path' : "/robots.txt", 
-        'document_root': settings.TEMPLATE_DIRS[0],
-        'show_indexes': False } ),
-    (r'^favicon.ico$', 'django.views.static.serve', 
-      { 'path' : "/favicon.ico", 
-        'document_root': settings.TEMPLATE_DIRS[0],
-        'show_indexes': False } ),
-    (r'^css/(?P<path>.*)$', 'django.views.static.serve',
-      { 'document_root': "%s/css" % settings.TEMPLATE_DIRS[0]}),
-    (r'^images/(?P<path>.*)$', 'django.views.static.serve',
-      { 'document_root': "%s/images" % settings.TEMPLATE_DIRS[0]}),
-    (r'^fonts/(?P<path>.*)$', 'django.views.static.serve',
-      { 'document_root': "%s/fonts" % settings.TEMPLATE_DIRS[0]}),
-    (r'^javascripts/(?P<path>.*)$', 'django.views.static.serve',
-      { 'document_root': "%s/javascripts" % settings.TEMPLATE_DIRS[0]}),  
-  )

@@ -1,21 +1,8 @@
-{% extends "charts/base_parlamentari.html" %}
+{% extends "base_parlamentari.html" %}
 {% load i18n %}
 
 {% block title %}| {% trans "list of" %} {{ type }}{% endblock %}
 
-{% block head_includes %}
-  {{ block.super }}
-
-  <script type="text/javascript" charset="utf-8">
-    $(document).ready(function() { 
-      $("#complete-chart").tablesorter({
-        sortList: [[1, 1]], 
-        headers: { 3: {sorter: false}, 4: {sorter: false} },
-        widgets: ['zebra']
-      }); 
-    });  
-  </script>  
-{% endblock %}
 
 {% block list_class %}class="active"{% endblock %}
 
@@ -85,5 +72,19 @@
     </tbody>
   </table>
   
+{% endblock %}
+
+{% block js_footer %}
+  {{ block.super }}
+
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() { 
+      $("#complete-chart").tablesorter({
+        sortList: [[1, 1]], 
+        headers: { 3: {sorter: false}, 4: {sorter: false} },
+        widgets: ['zebra']
+      }); 
+    });  
+  </script>  
 {% endblock %}
 

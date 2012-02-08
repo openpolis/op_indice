@@ -8,7 +8,7 @@
                 {% if fetch_s3_images %}
                   src="http://op_openparlamento_images.s3.amazonaws.com/parlamentari/thumb/{{rec.politico_id}}.jpeg"
                 {% else %}
-                  src="/images/ico-type-politico-portrait.png"
+                  src="{{ STATIC_URL }}img/ico-type-politico-portrait.png"
                 {% endif %}
                 alt="Ico-type-politico-portrait">	
             <a href="{{openparlamento_url}}/parlamentare/{{rec.politico_id}}" 

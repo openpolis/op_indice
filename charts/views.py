@@ -8,7 +8,7 @@ from django.http import Http404
 from json_proxy import get_json_data
 
 def home(request, extraction_date, openparlamento_url, fetch_s3_images):
-  return render_to_response("charts/home.html", 
+  return render_to_response("home.html", 
     {
       'openparlamento_url': openparlamento_url,
       'extraction_date': extraction_date,
@@ -20,7 +20,7 @@ def home(request, extraction_date, openparlamento_url, fetch_s3_images):
   )
   
 def info(request):
-  return render_to_response("charts/info.html", 
+  return render_to_response("info.html", 
     {
       'block_name': "info.%s" %  request.LANGUAGE_CODE
     },
@@ -51,7 +51,7 @@ def mps(request, group_by, type, extraction_date, openparlamento_url):
   
   records = get_json_data(json_url)
   
-  return render_to_response("charts/parlamentari_%s.html" % group_by, 
+  return render_to_response("parlamentari_%s.html" % group_by, 
     { 
       'object_list': records, 
       'objects_count': len(records), 
@@ -76,7 +76,7 @@ def location(request, op_constituency_name, extraction_date, openparlamento_url,
     raise Http404
 
       
-  return render_to_response("charts/location.html", 
+  return render_to_response("location.html", 
     {
       'constituencies' : c_hash,
       'extraction_date': extraction_date, 
