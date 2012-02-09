@@ -18,20 +18,20 @@
 {% block sub_nav %}
   <nav id="sub"><!-- sub nav -->
     <ul class="nav nav-pills">
-      <li id="sub-nav-list">
-        <a href="/{{type|lower}}.html" {% block list_class %}{% endblock %}>{% trans "complete list" %}</a>
+      <li id="sub-nav-list" {% block list_class %}{% endblock %}>
+        <a href="/{{type|lower}}.html">{% trans "complete list" %}</a>
       </li>
-      <li id="sub-nav-sex">
-        <a href="/{{type|lower}}/sex.html" {% block sex_class %}{% endblock %}>{% trans "by sex" %}</a>
+      <li id="sub-nav-sex" {% block sex_class %}{% endblock %}>
+        <a href="/{{type|lower}}/sex.html">{% trans "by sex" %}</a>
       </li>
-      <li id="sub-nav-group">
-        <a href="/{{type|lower}}/group.html" {% block group_class %}{% endblock %}>{% trans "by group" %}</a>
+      <li id="sub-nav-group" {% block group_class %}{% endblock %}>
+        <a href="/{{type|lower}}/group.html">{% trans "by group" %}</a>
       </li>
-      <li id="sub-nav-constituency">
-        <a href="/{{type|lower}}/constituency.html" {% block constituency_class %}{% endblock %}>{% trans "by region" %}</a>
+      <li id="sub-nav-constituency" {% block constituency_class %}{% endblock %}>
+        <a href="/{{type|lower}}/constituency.html">{% trans "by region" %}</a>
       </li>
     </ul>
-	</nav><!-- end of sub nav -->	
+  </nav><!-- end of sub nav -->	
 {% endblock %}
 
 {% block content %}

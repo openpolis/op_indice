@@ -84,10 +84,6 @@ nav#sub ul {
   margin-left: 16px;
 }
 
-nav#sub a:hover, nav#sub .active { 
-  background-color: #0a5264; 
-  color: #f4f2ea ;
-}
 
 nav#sub a {
   color:  #e27221;
@@ -492,6 +488,12 @@ margin-left: 8.65%;
 margin-left: 51.6%;
 }
 
+
+.nav-pills .active > a, 
+.nav-pills .active > a:hover {
+  color: white;
+  background-color: #0A5264;
+}
 
 /* Subnav */
 .subnav {

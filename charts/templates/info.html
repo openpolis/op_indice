@@ -7,7 +7,7 @@
 
 {% block sub_nav %}
 <a name="su"></a>
-<div class="subnav">
+<nav id="sub" class="spyable"><!-- sub nav -->
   <ul class="nav nav-pills">
     <li><a href="#metodo">la metodologia</a></li>
     <li><a href="#criterio">i criteri</a></li>
@@ -18,7 +18,8 @@
     <li><a href="#emendamenti">gli emendamenti</a></li>
     <li><a href="#tabella">la tabella di valutazione</a></li>
   </ul>
-</div>
+</nav><!-- end of sub nav -->	
+
 {% endblock %}
 
 {% block content %}
@@ -158,8 +159,8 @@
 
       // fix sub nav on scroll
       var $win = $(window)
-        , $nav = $('.subnav')
-        , navTop = $('.subnav').length && $('.subnav').offset().top + 80
+        , $nav = $('.spyable')
+        , navTop = $('.spyable').length && $('.spyable').offset().top + 80
         , isFixed = 0
 
       processScroll()
