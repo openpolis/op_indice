@@ -34,14 +34,14 @@
       <section id="top-deputati" class="top-chart">
         <h3>{% trans "Top 10 deputati" %}</h3>
         {% get_top 10 deputati as mps asof extraction_date %}
-        {% include "_mps_table_with_pictures.html" %}
+        {% include "charts/_mps_table_with_pictures.html" %}
         <div class="link-to-all"><a href="/deputati.html">{% trans "go to the complete list" %}</a></div>
       </section>
 
       <section id="top-senatori" class="top-chart">
         <h3>{% trans "Top 10 senatori" %}</h3>
         {% get_top 10 senatori as mps asof extraction_date %}
-        {% include "_mps_table_with_pictures.html" %}
+        {% include "charts/_mps_table_with_pictures.html" %}
         <div class="link-to-all"><a href="/senatori.html">{% trans "go to the complete list" %}</a></div>
       </section>
 
