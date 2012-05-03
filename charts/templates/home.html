@@ -91,12 +91,10 @@
 
       $( "#city" ).autocomplete({
         source: function( request, response ) {
-            $.ajax({
-                url: "http://www.openpolis.it/json_getLocationsForIndiceAutocompleter",
-                data: { 'name_starts_with': request.term },
-                crossDomain: false,
-                dataType: "jsonp",
-                success: function( data ) {
+            $.getJSON(
+                "http://politici.openpolis.it/json_getLocationsForIndiceAutocompleter?callback=?",
+                {'name_starts_with': request.term },
+                function( data ) {
                     response( $.map( data.locations, function( item ) {
                         return {
                             label: item.name + (item.prov != ''? " (" + item.prov + ")" : ''),
@@ -104,7 +102,7 @@
                         }
                     }));
                 }                  
-            });
+            );
         },
         minLength: 2,
         select: function( event, ui ) {
