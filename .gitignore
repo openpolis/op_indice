@@ -3,4 +3,6 @@ apache/*
 mirror_s3sync.txt
 urls_local.py
 settings_local.py
+settings_production.py
 web/*
+fabfile/*

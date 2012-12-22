@@ -134,7 +134,7 @@ LANGUAGES = (
 )
 
 ENVIRONMENT = 'staging'
-OPENPARLAMENTO_URL = 'http://parlamento.staging.openpolis.it'
+OPENPARLAMENTO_URL = 'http://parlamento.openpolis.it'
 FETCH_S3_IMAGES = True
 
 # Root URLconf module for staging servers
