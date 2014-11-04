@@ -6,3 +6,4 @@ settings_local.py
 settings_production.py
 web/*
 fabfile/*
+*.pyc
