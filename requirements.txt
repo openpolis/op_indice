@@ -7,7 +7,7 @@ django-extensions==0.7.1
 django-generic-flatblocks==0.9.1
 docutils==0.8.1
 pycrypto==2.6
-python-dateutil==2.0
+python-dateutil
 simplejson==2.3.2
 ssh==1.7.14
 wsgiref==0.1.2

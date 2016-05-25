@@ -243,9 +243,6 @@ footer ul.dotted-list li {
   padding: 0;
 }
 
-#sub-footer ul li { display: inline-block; border-left: 1px solid #ccc; }
-#sub-footer ul li:first-child { display: inline-block; border-left: 0; }
-
 span.icon {
   background: transparent url(../img/icons/sprite-social-icons.png) no-repeat;
   margin: 0 7px;
@@ -401,7 +398,7 @@ margin-right: auto;
 #camere-aperte {
   background: url("../img/bg-green-band.png") repeat-x -10px;
   height: 252px;
-  width: 35%;
+  width: 20%;
   float: left;
 }
 
@@ -430,7 +427,7 @@ margin-right: auto;
   background: url("../img/bg-green-band-2.png") repeat-x -10px;
   height: 252px;
   text-align: left;
-  width: 45%;
+  width: 60%;
   margin: 0 auto;
   margin-bottom: 1em;
   float: left;
